@@ -1,0 +1,4 @@
+if not exists (select * from dbo.sysusers where name = N'GescomWeb' and uid < 16382)
+	EXEC sp_grantdbaccess N'GescomWeb'
+GO
+

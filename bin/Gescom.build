@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+    <project name="GescomSVN" default="CompleteBuild" basedir=".">
+        <description>CheckOut Gescom</description>
+        <target name="CompleteBuild" depends="InnoSetup" />
+        <target name="CheckOutGescom" description="Genera los ficheros exe">
+            	<!-- <echo message="Using TortoiseSVN"/>
+				   <exec program="${TortoiseSVN_Path}\tortoiseproc.exe"
+				     commandline="/command:update /path:. /notempfile /closeonend:1"
+				     basedir="./"
+				     failonerror="false"/> -->
+     				     <svn-update
+					    destination="." 
+					    uri="svn://80.33.251.41/gescom" />
+						
+        </target>
+        <target name="InnoSetup" description="Construir el instalable">
+        			<exec program="ISCC.exe" basedir="${environment::get-folder-path('ProgramFiles')}\Inno Setup 5">
+    					<arg value="./Inno Setup/Gescom.iss" />
+		  			</exec>
+		  </target>
+    </project>
+        

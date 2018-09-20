@@ -1,0 +1,46 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/****** Objeto: vista dbo.vPedidoVentaPendientes    fecha de la secuencia de comandos: 13/09/2001 20:09:23 ******/
+
+/****** Objeto:  vista dbo.vPedidoVentaPendientes    fecha de la secuencia de comandos: 10/09/2001 18:06:21 ******/
+CREATE VIEW dbo.vPedidoVentaPendientes
+AS
+SELECT PedidoVentaItems.Situacion, 
+    PedidoVentaItems.PedidoVentaItemID AS DocumentoID, 
+    PedidosVenta.Numero, 
+    PedidoVentaItems.CantidadT36 + PedidoVentaItems.CantidadT38
+     + PedidoVentaItems.CantidadT40 + PedidoVentaItems.CantidadT42
+     + PedidoVentaItems.CantidadT44 + PedidoVentaItems.CantidadT46
+     + PedidoVentaItems.CantidadT48 + PedidoVentaItems.CantidadT50
+     + PedidoVentaItems.CantidadT52 + PedidoVentaItems.CantidadT54
+     + PedidoVentaItems.CantidadT56 - PedidoVentaItems.ServidoT36
+     - PedidoVentaItems.ServidoT38 - PedidoVentaItems.ServidoT40 -
+     PedidoVentaItems.ServidoT42 - PedidoVentaItems.ServidoT44 - PedidoVentaItems.ServidoT46
+     - PedidoVentaItems.ServidoT48 - PedidoVentaItems.ServidoT50 -
+     PedidoVentaItems.ServidoT52 - PedidoVentaItems.ServidoT54 - PedidoVentaItems.ServidoT56
+     AS Cantidad, PedidosVenta.Fecha, 
+    PedidosVenta.ClienteID AS PropietarioID, 
+    PedidosVenta.TemporadaID, PedidosVenta.EmpresaID, 
+    vNombreArticuloColores.CODIGO AS Nombre, 
+    vNombreArticuloColores.Nombre AS Descripcion, 
+    PedidoVentaItems.ArticuloColorID
+FROM PedidosVenta INNER JOIN
+    PedidoVentaItems ON 
+    PedidosVenta.PedidoVentaID = PedidoVentaItems.PedidoVentaID
+     INNER JOIN
+    vNombreArticuloColores ON 
+    PedidoVentaItems.ArticuloColorID = vNombreArticuloColores.ARTICULOCOLORID
+WHERE (PedidoVentaItems.Situacion <> 'C')
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

@@ -1,0 +1,26 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vPedidoVentaSinCorte
+AS
+SELECT     dbo.PedidoVentaItems.PedidoVentaItemID, dbo.PedidosVenta.PedidoVentaID, dbo.PedidosVenta.Numero, dbo.PedidoVentaItems.SituacionCorte, 
+                      dbo.PedidosVenta.Fecha, dbo.PedidosVenta.TemporadaID, dbo.PedidosVenta.EmpresaID, dbo.PedidoVentaItems.PrecioVentaEUR, 
+                      dbo.Clientes.Nombre AS NombreCliente, dbo.vPedidoVentaPendientes.Descripcion AS Nombre, dbo.vPedidoVentaPendientes.Cantidad, 
+                      ROUND(dbo.PedidoVentaItems.PrecioVentaEUR * dbo.vPedidoVentaPendientes.Cantidad, 2) AS BrutoEUR
+FROM         dbo.vPedidoVentaPendientes INNER JOIN
+                      dbo.Clientes ON dbo.vPedidoVentaPendientes.PropietarioID = dbo.Clientes.ClienteID INNER JOIN
+                      dbo.PedidoVentaItems INNER JOIN
+                      dbo.PedidosVenta ON dbo.PedidoVentaItems.PedidoVentaID = dbo.PedidosVenta.PedidoVentaID ON 
+                      dbo.vPedidoVentaPendientes.DocumentoID = dbo.PedidoVentaItems.PedidoVentaItemID
+WHERE     (dbo.PedidoVentaItems.SituacionCorte <> 'C') AND (dbo.vPedidoVentaPendientes.Cantidad > 0)
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

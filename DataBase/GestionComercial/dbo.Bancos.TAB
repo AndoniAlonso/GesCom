@@ -1,0 +1,34 @@
+CREATE TABLE [dbo].[Bancos] (
+	[BancoID] [int] IDENTITY (1, 1) NOT NULL ,
+	[EmpresaID] [int] NULL ,
+	[CuentaBancariaID] [int] NOT NULL ,
+	[DireccionID] [int] NOT NULL ,
+	[Contacto] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[CuentaContable] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[SufijoNIF] [char] (3) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	CONSTRAINT [PK_Bancos] PRIMARY KEY  NONCLUSTERED 
+	(
+		[BancoID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_Bancos_CuentasBancarias] FOREIGN KEY 
+	(
+		[CuentaBancariaID]
+	) REFERENCES [dbo].[CuentasBancarias] (
+		[CuentaBancariaID]
+	),
+	CONSTRAINT [FK_Bancos_Direcciones] FOREIGN KEY 
+	(
+		[DireccionID]
+	) REFERENCES [dbo].[Direcciones] (
+		[DireccionID]
+	),
+	CONSTRAINT [FK_Bancos_Empresas] FOREIGN KEY 
+	(
+		[EmpresaID]
+	) REFERENCES [dbo].[Empresas] (
+		[EmpresaID]
+	)
+) ON [PRIMARY]
+GO
+
+

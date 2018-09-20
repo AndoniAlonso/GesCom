@@ -1,0 +1,25 @@
+CREATE TABLE [dbo].[Apuntes] (
+	[ApunteID] [int] IDENTITY (1, 1) NOT NULL ,
+	[AsientoID] [int] NOT NULL ,
+	[Cuenta] [char] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[TipoImporte] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[ImportePTA] [IMPORTEPTA] NOT NULL ,
+	[ImporteEUR] [IMPORTEEUR] NOT NULL ,
+	[Descripcion] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Fecha] [datetime] NOT NULL ,
+	[Documento] [char] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[TipoApunte] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	CONSTRAINT [PK_Apuntes] PRIMARY KEY  NONCLUSTERED 
+	(
+		[ApunteID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_Apuntes_Asientos] FOREIGN KEY 
+	(
+		[AsientoID]
+	) REFERENCES [dbo].[Asientos] (
+		[AsientoID]
+	)
+) ON [PRIMARY]
+GO
+
+

@@ -1,0 +1,36 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vCobrosPendientes
+AS
+SELECT CobrosPagos.SituacionComercial, 
+    CobrosPagos.CobroPagoID AS DocumentoID, 
+    FacturasVenta.Numero, Clientes.Nombre, 
+    'Vcto: ' + CONVERT(char, CobrosPagos.Vencimiento, 103) 
+    AS Descripcion, CobrosPagos.ImporteEUR AS Cantidad, 
+    CobrosPagos.FechaEmision, 
+    CobrosPagos.PersonaID AS PropietarioID, 
+    CobrosPagos.TemporadaID, CobrosPagos.EmpresaID, 
+    FormasDePago.MesesPrimerGiro, 
+    FormasDePago.MesesEntreGiros
+FROM Clientes INNER JOIN
+    CobrosPagos ON 
+    Clientes.ClienteID = CobrosPagos.PersonaID INNER JOIN
+    FormasDePago ON 
+    CobrosPagos.FormaPagoID = FormasDePago.FormaPagoID LEFT
+     OUTER JOIN
+    FacturasVenta ON 
+    CobrosPagos.FacturaID = FacturasVenta.FacturaVentaID
+WHERE ((FormasDePago.MesesPrimerGiro <> 0) OR
+    (FormasDePago.MesesEntreGiros <> 0)) AND 
+    (CobrosPagos.Tipo = 'C') AND 
+    (CobrosPagos.SituacionComercial = 'A')
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

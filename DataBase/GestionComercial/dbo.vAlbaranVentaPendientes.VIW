@@ -1,0 +1,29 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vAlbaranVentaPendientes
+AS
+SELECT     dbo.AlbaranVentaItems.Situacion, dbo.AlbaranVentaItems.AlbaranVentaID AS DocumentoID, dbo.AlbaranesVenta.Numero, dbo.AlbaranesVenta.Fecha, 
+                      dbo.AlbaranesVenta.ClienteID AS PropietarioID, dbo.AlbaranesVenta.TemporadaID, dbo.AlbaranesVenta.EmpresaID, 
+                      dbo.Clientes.Nombre AS Descripcion, dbo.AlbaranesVenta.SuReferencia AS Nombre, 
+                      SUM(dbo.AlbaranVentaItems.CantidadT36 + dbo.AlbaranVentaItems.CantidadT38 + dbo.AlbaranVentaItems.CantidadT40 + dbo.AlbaranVentaItems.CantidadT42
+                       + dbo.AlbaranVentaItems.CantidadT44 + dbo.AlbaranVentaItems.CantidadT46 + dbo.AlbaranVentaItems.CantidadT48 + dbo.AlbaranVentaItems.CantidadT50
+                       + dbo.AlbaranVentaItems.CantidadT52 + dbo.AlbaranVentaItems.CantidadT54 + dbo.AlbaranVentaItems.CantidadT56) AS Cantidad
+FROM         dbo.AlbaranVentaItems INNER JOIN
+                      dbo.AlbaranesVenta ON dbo.AlbaranVentaItems.AlbaranVentaID = dbo.AlbaranesVenta.AlbaranVentaID INNER JOIN
+                      dbo.Clientes ON dbo.AlbaranesVenta.ClienteID = dbo.Clientes.ClienteID
+WHERE     (dbo.AlbaranVentaItems.Situacion <> 'F')
+GROUP BY dbo.AlbaranVentaItems.Situacion, dbo.AlbaranVentaItems.AlbaranVentaID, dbo.AlbaranesVenta.Numero, dbo.AlbaranesVenta.Fecha, 
+                      dbo.AlbaranesVenta.ClienteID, dbo.AlbaranesVenta.TemporadaID, dbo.AlbaranesVenta.EmpresaID, dbo.Clientes.Nombre, 
+                      dbo.AlbaranesVenta.SuReferencia
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

@@ -1,0 +1,40 @@
+CREATE TABLE [dbo].[PedidosCompra] (
+	[PedidoCompraID] [int] IDENTITY (1, 1) NOT NULL ,
+	[ProveedorID] [int] NOT NULL ,
+	[Fecha] [datetime] NOT NULL ,
+	[FechaEntrega] [datetime] NULL ,
+	[Numero] [int] NOT NULL ,
+	[NuestraReferencia] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[SuReferencia] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Observaciones] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[BancoID] [int] NOT NULL ,
+	[TransportistaID] [int] NOT NULL ,
+	[FormaPagoID] [int] NOT NULL ,
+	[DatoComercialID] [int] NOT NULL ,
+	[TemporadaID] [int] NOT NULL ,
+	[EmpresaID] [int] NOT NULL ,
+	[TotalBrutoPTA] [IMPORTEPTA] NOT NULL ,
+	[TotalBrutoEUR] [IMPORTEEUR] NOT NULL ,
+	CONSTRAINT [PK_PedidosCompra] PRIMARY KEY  NONCLUSTERED 
+	(
+		[PedidoCompraID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [IX_PedidosCompra] UNIQUE  NONCLUSTERED 
+	(
+		[EmpresaID],
+		[TemporadaID],
+		[Numero]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_PedidosCompra_Transportistas] FOREIGN KEY 
+	(
+		[TransportistaID]
+	) REFERENCES [dbo].[Transportistas] (
+		[TransportistaID]
+	) NOT FOR REPLICATION 
+) ON [PRIMARY]
+GO
+
+
+alter table [dbo].[PedidosCompra] nocheck constraint [FK_PedidosCompra_Transportistas]
+GO
+

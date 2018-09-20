@@ -1,0 +1,20 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vMoviMaterialAlbaranCompra
+AS
+SELECT     dbo.MoviMateriales.MOVIMATERIALID, dbo.AlbaranesCompra.Numero, dbo.AlbaranesCompra.TemporadaID, dbo.AlbaranesCompra.EmpresaID
+FROM         dbo.AlbaranesCompra INNER JOIN
+                      dbo.AlbaranCompraItems ON dbo.AlbaranesCompra.AlbaranCompraID = dbo.AlbaranCompraItems.AlbaranCompraID INNER JOIN
+                      dbo.MoviMateriales ON dbo.AlbaranCompraItems.AlbaranCompraItemID = dbo.MoviMateriales.DocumentoID
+WHERE     (dbo.MoviMateriales.TipoDocumento = 'A')
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

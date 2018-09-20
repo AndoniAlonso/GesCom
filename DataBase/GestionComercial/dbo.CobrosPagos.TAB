@@ -1,0 +1,54 @@
+CREATE TABLE [dbo].[CobrosPagos] (
+	[CobroPagoID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Tipo] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Vencimiento] [datetime] NOT NULL ,
+	[PersonaID] [int] NOT NULL ,
+	[FormaPagoID] [int] NOT NULL ,
+	[FacturaID] [int] NULL ,
+	[NumeroGiro] [int] NOT NULL ,
+	[SituacionComercial] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[SituacionContable] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[ImportePTA] [IMPORTEPTA] NOT NULL ,
+	[ImporteEUR] [IMPORTEEUR] NOT NULL ,
+	[FechaEmision] [datetime] NOT NULL ,
+	[FechaDomiciliacion] [datetime] NULL ,
+	[FechaContable] [datetime] NULL ,
+	[BancoID] [int] NULL ,
+	[MedioPagoID] [int] NULL ,
+	[EmpresaID] [int] NOT NULL ,
+	[TemporadaID] [int] NOT NULL ,
+	CONSTRAINT [PK_COBROSPAGOS_1__10] PRIMARY KEY  CLUSTERED 
+	(
+		[CobroPagoID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [UQ_COBROSPAGOS_2__10] UNIQUE  NONCLUSTERED 
+	(
+		[CobroPagoID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_CobrosPagos_FacturasVenta] FOREIGN KEY 
+	(
+		[FacturaID]
+	) REFERENCES [dbo].[FacturasVenta] (
+		[FacturaVentaID]
+	),
+	CONSTRAINT [FK_CobrosPagos_FormasDePago] FOREIGN KEY 
+	(
+		[FormaPagoID]
+	) REFERENCES [dbo].[FormasDePago] (
+		[FormaPagoID]
+	),
+	CONSTRAINT [FK_CobrosPagos_MediosPago] FOREIGN KEY 
+	(
+		[MedioPagoID]
+	) REFERENCES [dbo].[MediosPago] (
+		[MedioPagoID]
+	),
+	CONSTRAINT [CK_CobrosPagos] CHECK ([SituacionComercial] = 'C' or [SituacionComercial] = 'R' or [SituacionComercial] = 'S' or [SituacionComercial] = 'A'),
+	CONSTRAINT [CK_CobrosPagos_1] CHECK ([SituacionContable] = 'C' or [SituacionContable] = 'A')
+) ON [PRIMARY]
+GO
+
+
+alter table [dbo].[CobrosPagos] nocheck constraint [FK_CobrosPagos_FacturasVenta]
+GO
+

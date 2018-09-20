@@ -1,0 +1,9 @@
+setuser
+GO
+
+EXEC sp_addtype N'CANTIDAD', N'numeric(14,2)', N'null'
+GO
+
+setuser
+GO
+

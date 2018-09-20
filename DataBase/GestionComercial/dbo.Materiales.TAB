@@ -1,0 +1,38 @@
+CREATE TABLE [dbo].[Materiales] (
+	[MATERIALID] [int] IDENTITY (1, 1) NOT NULL ,
+	[NOMBRE] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[CODIGO] [varchar] (12) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[UNIDADMEDIDA] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[STOCKACTUAL] [CANTIDAD] NOT NULL ,
+	[STOCKPENDIENTE] [CANTIDAD] NOT NULL ,
+	[STOCKMINIMO] [CANTIDAD] NOT NULL ,
+	[STOCKMAXIMO] [CANTIDAD] NOT NULL ,
+	[PRECIOCOSTEPTA] [IMPORTEPTA] NOT NULL ,
+	[PRECIOCOSTEEUR] [PRECIOMATERIALEUR] NOT NULL ,
+	[PRECIOPONDERADOPTA] [IMPORTEPTA] NOT NULL ,
+	[PRECIOPONDERADOEUR] [PRECIOMATERIALEUR] NOT NULL ,
+	[TipoMaterial] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[AnchuraTela] [CANTIDAD] NOT NULL ,
+	[FechaAlta] [datetime] NOT NULL ,
+	[Composicion1] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[PorcComposicion1] [PORCENTAJE] NOT NULL ,
+	[Composicion2] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[PorcComposicion2] [PORCENTAJE] NOT NULL ,
+	[Composicion3] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[PorcComposicion3] [PORCENTAJE] NOT NULL ,
+	[Composicion4] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[PorcComposicion4] [PORCENTAJE] NOT NULL ,
+	[ProveedorID] [int] NULL ,
+	CONSTRAINT [PK_Materiales] PRIMARY KEY  NONCLUSTERED 
+	(
+		[MATERIALID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [IX_Materiales] UNIQUE  NONCLUSTERED 
+	(
+		[CODIGO]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [CK_Materiales_TipoMaterial] CHECK ([TipoMaterial] = 'T' or [TipoMaterial] = 'O')
+) ON [PRIMARY]
+GO
+
+

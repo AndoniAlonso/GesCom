@@ -1,0 +1,9 @@
+setuser
+GO
+
+EXEC sp_addtype N'PORCENTAJE', N'numeric(5,2)', N'null'
+GO
+
+setuser
+GO
+

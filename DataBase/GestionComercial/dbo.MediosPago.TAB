@@ -1,0 +1,18 @@
+CREATE TABLE [dbo].[MediosPago] (
+	[MedioPagoID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Nombre] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[NombreAbreviado] [char] (3) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	CONSTRAINT [PK_MediosPago] PRIMARY KEY  NONCLUSTERED 
+	(
+		[MedioPagoID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+ CREATE  UNIQUE  INDEX [IX_MediosPago_Nombre] ON [dbo].[MediosPago]([Nombre]) WITH  FILLFACTOR = 90 ON [PRIMARY]
+GO
+
+ CREATE  UNIQUE  INDEX [IX_MediosPago_NombreAbreviado] ON [dbo].[MediosPago]([NombreAbreviado]) WITH  FILLFACTOR = 90 ON [PRIMARY]
+GO
+
+

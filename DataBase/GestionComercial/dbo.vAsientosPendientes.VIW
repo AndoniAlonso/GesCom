@@ -1,0 +1,22 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vAsientosPendientes
+AS
+SELECT     dbo.Asientos.AsientoID, dbo.Asientos.Numero, dbo.Asientos.Ejercicio, dbo.Asientos.Concepto, dbo.Asientos.TemporadaID, dbo.Asientos.EmpresaID, 
+                      dbo.Apuntes.ImportePTA, dbo.Apuntes.ImporteEUR, dbo.Apuntes.TipoImporte, dbo.Apuntes.Cuenta, dbo.Apuntes.Fecha, dbo.Apuntes.Documento, 
+                      dbo.Apuntes.ApunteID
+FROM         dbo.Asientos INNER JOIN
+                      dbo.Apuntes ON dbo.Asientos.AsientoID = dbo.Apuntes.AsientoID
+WHERE     (dbo.Asientos.Situacion = 'A')
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

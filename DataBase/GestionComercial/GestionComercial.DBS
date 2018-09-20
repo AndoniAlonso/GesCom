@@ -1,0 +1,61 @@
+CREATE DATABASE [GestionComercial]  ON (NAME = N'GestionComercial_Datos', FILENAME = N'E:\Archivos de programa\Microsoft SQL Server\MSSQL\Data\GestionComercial.mdf' , SIZE = 89, FILEGROWTH = 10%) LOG ON (NAME = N'GestionComercial_Registro', FILENAME = N'E:\Archivos de programa\Microsoft SQL Server\MSSQL\Data\GestionComercial_log.ldf' , SIZE = 1, FILEGROWTH = 10%)
+ COLLATE SQL_Latin1_General_CP1_CI_AS
+GO
+
+exec sp_dboption N'GestionComercial', N'autoclose', N'false'
+GO
+
+exec sp_dboption N'GestionComercial', N'bulkcopy', N'false'
+GO
+
+exec sp_dboption N'GestionComercial', N'trunc. log', N'true'
+GO
+
+exec sp_dboption N'GestionComercial', N'torn page detection', N'true'
+GO
+
+exec sp_dboption N'GestionComercial', N'read only', N'false'
+GO
+
+exec sp_dboption N'GestionComercial', N'dbo use', N'false'
+GO
+
+exec sp_dboption N'GestionComercial', N'single', N'false'
+GO
+
+exec sp_dboption N'GestionComercial', N'autoshrink', N'true'
+GO
+
+exec sp_dboption N'GestionComercial', N'ANSI null default', N'false'
+GO
+
+exec sp_dboption N'GestionComercial', N'recursive triggers', N'false'
+GO
+
+exec sp_dboption N'GestionComercial', N'ANSI nulls', N'false'
+GO
+
+exec sp_dboption N'GestionComercial', N'concat null yields null', N'false'
+GO
+
+exec sp_dboption N'GestionComercial', N'cursor close on commit', N'false'
+GO
+
+exec sp_dboption N'GestionComercial', N'default to local cursor', N'false'
+GO
+
+exec sp_dboption N'GestionComercial', N'quoted identifier', N'false'
+GO
+
+exec sp_dboption N'GestionComercial', N'ANSI warnings', N'false'
+GO
+
+exec sp_dboption N'GestionComercial', N'auto create statistics', N'true'
+GO
+
+exec sp_dboption N'GestionComercial', N'auto update statistics', N'true'
+GO
+
+if( ( (@@microsoftversion / power(2, 24) = 8) and (@@microsoftversion & 0xffff >= 724) ) or ( (@@microsoftversion / power(2, 24) = 7) and (@@microsoftversion & 0xffff >= 1082) ) )
+	exec sp_dboption N'GestionComercial', N'db chaining', N'false'
+GO

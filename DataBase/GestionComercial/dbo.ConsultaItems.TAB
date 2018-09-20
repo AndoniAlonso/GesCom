@@ -1,0 +1,22 @@
+CREATE TABLE [dbo].[ConsultaItems] (
+	[ConsultaItemID] [int] IDENTITY (1, 1) NOT NULL ,
+	[ConsultaID] [int] NOT NULL ,
+	[Alias] [char] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Campo] [char] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[OperadorID] [int] NOT NULL ,
+	[Valor1] [char] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Valor2] [char] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	CONSTRAINT [PK_ConsultaItems] PRIMARY KEY  NONCLUSTERED 
+	(
+		[ConsultaItemID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_ConsultaItems_Consulta] FOREIGN KEY 
+	(
+		[ConsultaID]
+	) REFERENCES [dbo].[Consultas] (
+		[ConsultaID]
+	)
+) ON [PRIMARY]
+GO
+
+

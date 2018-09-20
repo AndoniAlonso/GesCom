@@ -1,0 +1,26 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vFacturasCompra
+AS
+SELECT     dbo.FacturasCompra.FacturaCompraID, dbo.FacturasCompra.Fecha, dbo.FacturasCompra.Numero, RTRIM(dbo.FacturasCompra.Observaciones) 
+                      AS Observaciones, dbo.FacturasCompra.BrutoEUR, dbo.FacturasCompra.TemporadaID, dbo.FacturasCompra.EmpresaID, 
+                      RTRIM(dbo.Proveedores.Nombre) AS NombreProveedor, dbo.vBancos.NombreEntidad AS NombreBanco, RTRIM(dbo.Transportistas.Nombre) 
+                      AS NombreTransportista, dbo.FacturasCompra.SituacionContable, dbo.Proveedores.CuentaContrapartida AS CuentaContable, 
+                      dbo.FacturasCompra.FechaContable, dbo.FacturasCompra.IVAEUR, dbo.FacturasCompra.NetoEUR, dbo.FacturasCompra.DescuentoEUR, 
+                      dbo.FacturasCompra.PortesEUR, dbo.FacturasCompra.EmbalajesEUR, STR(dbo.FacturasCompra.Numero, 7, 0) 
+                      + dbo.FacturasCompra.Sufijo AS CodigoFactura, dbo.FacturasCompra.EmbalajesEUR + dbo.FacturasCompra.PortesEUR AS GastosEUR, 
+                      dbo.Proveedores.ProveedorID, YEAR(dbo.FacturasCompra.FechaContable) AS Anio, dbo.FacturasCompra.BaseImponibleEUR
+FROM         dbo.FacturasCompra INNER JOIN
+                      dbo.Proveedores ON dbo.FacturasCompra.ProveedorID = dbo.Proveedores.ProveedorID INNER JOIN
+                      dbo.vBancos ON dbo.FacturasCompra.BancoID = dbo.vBancos.BancoID LEFT OUTER JOIN
+                      dbo.Transportistas ON dbo.FacturasCompra.TransportistaID = dbo.Transportistas.TransportistaID
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

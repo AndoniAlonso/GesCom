@@ -1,0 +1,65 @@
+CREATE TABLE [dbo].[AlbaranesCompra] (
+	[AlbaranCompraID] [int] IDENTITY (1, 1) NOT NULL ,
+	[ProveedorID] [int] NULL ,
+	[Fecha] [datetime] NULL ,
+	[Numero] [int] NULL ,
+	[NuestraReferencia] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[SuReferencia] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Observaciones] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[PortesPTA] [IMPORTEPTA] NULL ,
+	[PortesEUR] [IMPORTEEUR] NULL ,
+	[EmbalajesPTA] [IMPORTEPTA] NULL ,
+	[EmbalajesEUR] [IMPORTEEUR] NULL ,
+	[TotalBrutoPTA] [IMPORTEPTA] NULL ,
+	[TotalBrutoEUR] [IMPORTEEUR] NULL ,
+	[TransportistaID] [int] NULL ,
+	[DatoComercialID] [int] NULL ,
+	[TemporadaID] [int] NULL ,
+	[EmpresaID] [int] NULL ,
+	CONSTRAINT [PK_AlbaranesCompra] PRIMARY KEY  NONCLUSTERED 
+	(
+		[AlbaranCompraID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [IX_AlbaranesCompra] UNIQUE  NONCLUSTERED 
+	(
+		[EmpresaID],
+		[TemporadaID],
+		[Numero]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_AlbaranesCompra_DatosComerciales] FOREIGN KEY 
+	(
+		[DatoComercialID]
+	) REFERENCES [dbo].[DatosComerciales] (
+		[DatoComercialID]
+	),
+	CONSTRAINT [FK_AlbaranesCompra_Empresas] FOREIGN KEY 
+	(
+		[EmpresaID]
+	) REFERENCES [dbo].[Empresas] (
+		[EmpresaID]
+	),
+	CONSTRAINT [FK_AlbaranesCompra_Proveedores] FOREIGN KEY 
+	(
+		[ProveedorID]
+	) REFERENCES [dbo].[Proveedores] (
+		[ProveedorID]
+	),
+	CONSTRAINT [FK_AlbaranesCompra_Temporadas] FOREIGN KEY 
+	(
+		[TemporadaID]
+	) REFERENCES [dbo].[Temporadas] (
+		[TemporadaID]
+	),
+	CONSTRAINT [FK_AlbaranesCompra_Transportistas] FOREIGN KEY 
+	(
+		[TransportistaID]
+	) REFERENCES [dbo].[Transportistas] (
+		[TransportistaID]
+	) NOT FOR REPLICATION 
+) ON [PRIMARY]
+GO
+
+
+alter table [dbo].[AlbaranesCompra] nocheck constraint [FK_AlbaranesCompra_Transportistas]
+GO
+

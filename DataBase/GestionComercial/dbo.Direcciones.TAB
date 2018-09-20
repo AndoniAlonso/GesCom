@@ -1,0 +1,24 @@
+CREATE TABLE [dbo].[Direcciones] (
+	[DireccionID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Calle] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Poblacion] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[CodigoPostal] [varchar] (5) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Provincia] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Pais] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Telefono1] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Telefono2] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Telefono3] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Fax] [varchar] (30) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[EMAIL] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	CONSTRAINT [PK_DIRECCIONES_1__10] PRIMARY KEY  CLUSTERED 
+	(
+		[DireccionID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [UQ_DIRECCIONES_2__10] UNIQUE  NONCLUSTERED 
+	(
+		[DireccionID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+

@@ -1,0 +1,32 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/****** Objeto: vista dbo.vTransportistas    fecha de la secuencia de comandos: 13/09/2001 20:09:22 ******/
+
+/****** Objeto:  vista dbo.vTransportistas    fecha de la secuencia de comandos: 10/09/2001 18:06:20 ******/
+CREATE VIEW dbo.vTransportistas
+AS
+SELECT Transportistas.TransportistaID, Transportistas.Nombre, 
+    Transportistas.Titular, Transportistas.DNINIF, 
+    Transportistas.Contacto, Transportistas.Zona, 
+    Transportistas.DireccionID, Direcciones.Calle, 
+    Direcciones.Poblacion, Direcciones.CodigoPostal, 
+    Direcciones.Provincia, Direcciones.Pais, 
+    Direcciones.Telefono1, Direcciones.Telefono2, 
+    Direcciones.Telefono3, Direcciones.Fax, 
+    Direcciones.EMAIL
+FROM Transportistas INNER JOIN
+    Direcciones ON 
+    Transportistas.DireccionID = Direcciones.DireccionID
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

@@ -1,0 +1,40 @@
+CREATE TABLE [dbo].[Empresas] (
+	[EmpresaID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Nombre] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Codigo] [varchar] (2) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Titular] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[DNINIF] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Actividad] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[DireccionID] [int] NULL ,
+	[PedidoCompras] [int] NOT NULL ,
+	[PedidoVentas] [int] NOT NULL ,
+	[AlbaranCompras] [int] NOT NULL ,
+	[AlbaranVentas] [int] NOT NULL ,
+	[FacturaCompras] [int] NOT NULL ,
+	[FacturaVentas] [int] NOT NULL ,
+	[OrdenCorte] [int] NOT NULL ,
+	[TratamientoIVA] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[CodigoContawin] [int] NOT NULL ,
+	[EmpresaContawin] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	CONSTRAINT [PK___13__10] PRIMARY KEY  CLUSTERED 
+	(
+		[EmpresaID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [IX_Empresas] UNIQUE  NONCLUSTERED 
+	(
+		[Nombre]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [UQ___14__10] UNIQUE  NONCLUSTERED 
+	(
+		[EmpresaID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK___15__10] FOREIGN KEY 
+	(
+		[DireccionID]
+	) REFERENCES [dbo].[Direcciones] (
+		[DireccionID]
+	)
+) ON [PRIMARY]
+GO
+
+

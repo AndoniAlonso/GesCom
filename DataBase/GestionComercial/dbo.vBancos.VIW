@@ -1,0 +1,25 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/****** Objeto: vista dbo.vBancos    fecha de la secuencia de comandos: 13/09/2001 20:09:22 *****
+***** Objeto:  vista dbo.vBancos    fecha de la secuencia de comandos: 10/09/2001 18:06:21 *****
+
+
+*/
+CREATE VIEW dbo.vBancos
+AS
+SELECT     dbo.Bancos.BancoID, RTRIM(dbo.CuentasBancarias.NombreEntidad) AS NombreEntidad, RTRIM(dbo.Bancos.Contacto) AS Contacto, 
+                      dbo.CuentasBancarias.Cuenta, RTRIM(dbo.Empresas.Nombre) AS NombreEmpresa
+FROM         dbo.Bancos INNER JOIN
+                      dbo.Empresas ON dbo.Bancos.EmpresaID = dbo.Empresas.EmpresaID INNER JOIN
+                      dbo.CuentasBancarias ON dbo.Bancos.CuentaBancariaID = dbo.CuentasBancarias.CuentaBancariaID
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

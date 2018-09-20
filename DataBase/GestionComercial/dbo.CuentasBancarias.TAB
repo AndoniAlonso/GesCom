@@ -1,0 +1,20 @@
+CREATE TABLE [dbo].[CuentasBancarias] (
+	[CuentaBancariaID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Entidad] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Sucursal] [varchar] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Control] [varchar] (2) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Cuenta] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[NombreEntidad] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[NombreSucursal] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	CONSTRAINT [PK___1__10] PRIMARY KEY  CLUSTERED 
+	(
+		[CuentaBancariaID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [UQ_CUENTASBANCARIAS_3__10] UNIQUE  NONCLUSTERED 
+	(
+		[CuentaBancariaID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+

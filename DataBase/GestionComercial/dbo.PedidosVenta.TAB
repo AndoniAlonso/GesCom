@@ -1,0 +1,72 @@
+CREATE TABLE [dbo].[PedidosVenta] (
+	[PedidoVentaID] [int] IDENTITY (1, 1) NOT NULL ,
+	[ClienteID] [int] NOT NULL ,
+	[Fecha] [datetime] NOT NULL ,
+	[FechaEntrega] [datetime] NULL ,
+	[FechaTopeServicio] [datetime] NULL ,
+	[Numero] [int] NOT NULL ,
+	[Observaciones] [varchar] (150) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[RepresentanteID] [int] NOT NULL ,
+	[TransportistaID] [int] NOT NULL ,
+	[FormaPagoID] [int] NOT NULL ,
+	[DatoComercialID] [int] NOT NULL ,
+	[TemporadaID] [int] NOT NULL ,
+	[EmpresaID] [int] NOT NULL ,
+	[TotalBrutoEUR] [IMPORTEEUR] NOT NULL ,
+	[TotalBrutoPTA] [IMPORTEPTA] NOT NULL ,
+	CONSTRAINT [PK_PedidosVenta] PRIMARY KEY  NONCLUSTERED 
+	(
+		[PedidoVentaID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [IX_PedidosVenta] UNIQUE  NONCLUSTERED 
+	(
+		[EmpresaID],
+		[TemporadaID],
+		[Numero]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_PedidosVenta_Clientes] FOREIGN KEY 
+	(
+		[ClienteID]
+	) REFERENCES [dbo].[Clientes] (
+		[ClienteID]
+	),
+	CONSTRAINT [FK_PedidosVenta_DatosComerciales] FOREIGN KEY 
+	(
+		[DatoComercialID]
+	) REFERENCES [dbo].[DatosComerciales] (
+		[DatoComercialID]
+	),
+	CONSTRAINT [FK_PedidosVenta_Empresas] FOREIGN KEY 
+	(
+		[EmpresaID]
+	) REFERENCES [dbo].[Empresas] (
+		[EmpresaID]
+	),
+	CONSTRAINT [FK_PedidosVenta_FormasDePago] FOREIGN KEY 
+	(
+		[FormaPagoID]
+	) REFERENCES [dbo].[FormasDePago] (
+		[FormaPagoID]
+	),
+	CONSTRAINT [FK_PedidosVenta_Representantes] FOREIGN KEY 
+	(
+		[RepresentanteID]
+	) REFERENCES [dbo].[Representantes] (
+		[RepresentanteID]
+	),
+	CONSTRAINT [FK_PedidosVenta_Temporadas] FOREIGN KEY 
+	(
+		[TemporadaID]
+	) REFERENCES [dbo].[Temporadas] (
+		[TemporadaID]
+	),
+	CONSTRAINT [FK_PedidosVenta_Transportistas] FOREIGN KEY 
+	(
+		[TransportistaID]
+	) REFERENCES [dbo].[Transportistas] (
+		[TransportistaID]
+	)
+) ON [PRIMARY]
+GO
+
+

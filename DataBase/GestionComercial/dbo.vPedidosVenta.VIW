@@ -1,0 +1,28 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vPedidosVenta
+AS
+SELECT     dbo.PedidosVenta.PedidoVentaID, dbo.PedidosVenta.Fecha, dbo.PedidosVenta.Numero, RTRIM(dbo.PedidosVenta.Observaciones) AS Observaciones, 
+                      dbo.PedidosVenta.TemporadaID, dbo.PedidosVenta.EmpresaID, dbo.PedidosVenta.TotalBrutoEUR, dbo.PedidosVenta.TotalBrutoPTA, 
+                      RTRIM(dbo.Representantes.Nombre) AS NombreRepresentante, RTRIM(dbo.Clientes.Nombre) AS NombreCliente, 
+                      dbo.PedidosVenta.FechaTopeServicio, dbo.PedidosVenta.ClienteID, SUM(dbo.vPedidoVentaItemsSinTallas.TotalPedido) AS TotalPedido, 
+                      SUM(dbo.vPedidoVentaItemsSinTallas.TotalServido) AS TotalServido, ROUND(SUM(dbo.vPedidoVentaItemsSinTallas.TotalServido) 
+                      * 100 / SUM(dbo.vPedidoVentaItemsSinTallas.TotalPedido), 2) AS PorcentajeServicio
+FROM         dbo.Clientes INNER JOIN
+                      dbo.PedidosVenta ON dbo.Clientes.ClienteID = dbo.PedidosVenta.ClienteID INNER JOIN
+                      dbo.Representantes ON dbo.PedidosVenta.RepresentanteID = dbo.Representantes.RepresentanteID INNER JOIN
+                      dbo.vPedidoVentaItemsSinTallas ON dbo.PedidosVenta.PedidoVentaID = dbo.vPedidoVentaItemsSinTallas.PedidoVentaID
+GROUP BY dbo.PedidosVenta.PedidoVentaID, dbo.PedidosVenta.Fecha, dbo.PedidosVenta.Numero, dbo.PedidosVenta.Observaciones, 
+                      dbo.PedidosVenta.TemporadaID, dbo.PedidosVenta.EmpresaID, dbo.PedidosVenta.TotalBrutoEUR, dbo.PedidosVenta.TotalBrutoPTA, 
+                      dbo.Representantes.Nombre, dbo.Clientes.Nombre, dbo.PedidosVenta.FechaTopeServicio, dbo.PedidosVenta.ClienteID
+HAVING      (SUM(dbo.vPedidoVentaItemsSinTallas.TotalPedido) <> 0)
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

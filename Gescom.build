@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+    <project name="Gescom" default="CompleteBuild" basedir=".">
+        <description>Construir Gescom</description>
+        <property name="COMAdmin.Application" value="GCServerMTS" readonly="true" />
+        <property name="COMAdmin.EXEName" value="${environment::get-folder-path('ProgramFiles')}\COMAdmin" readonly="true" />
+        <property name="COMAdmin.COMDLLName" value=".\bin\GCServerMTS.dll" readonly="true" />
+        <property name="COMAdmin.CoreCOMDLLName" value=".\bin\CoreServer.dll" readonly="true" />
+        <target name="CompleteBuild" depends="Gescom,AplicacionCOM" />
+        <target name="Gescom" description="Genera los ficheros exe" depends="GescomServer,CoreObjects">
+            <vb6 project="Gescom.vbg" outdir="bin" />
+        </target>
+        <target name="GescomServer" description="Genera el fichero GCServerMTS.dll">
+  	    <exec program="COMAdmin.exe" append="true" basedir="${COMAdmin.EXEName}" commandline="/a:shutdown /app:${COMAdmin.Application}" failonerror="false">
+	    </exec>
+            <vb6 project="GescomServer\GescomServer.vbp" outdir="bin" />
+        </target>
+        <target name="CoreObjects" description="Genera el fichero CoreObjects.dll" depends="CoreServer">
+            <vb6 project="CoreObjects\CoreObjects.vbp" outdir="bin" />
+        </target>
+        <target name="CoreServer" description="Genera el fichero CoreServer.dll">
+  	    <exec program="COMAdmin.exe" append="true" basedir="${COMAdmin.EXEName}" commandline="/a:shutdown /app:${COMAdmin.Application}" failonerror="false">
+	    </exec>
+            <vb6 project="CoreServer\CoreServer.vbp" outdir="bin" />
+        </target>
+	<target name="AplicacionCOM" description="Crea la aplicacion com+ asociada la DLL GCServerMTS">
+		<exec program="COMAdmin.exe" append="true" basedir="${COMAdmin.EXEName}" commandline="/a:shutdown /app:${COMAdmin.Application}" failonerror="false">
+		</exec>
+		<exec program="COMAdmin.exe" append="true" basedir="${COMAdmin.EXEName}" commandline="/a:deleteallcomponents /app:${COMAdmin.Application}" failonerror="false">
+		</exec>
+		<exec program="COMAdmin.exe" append="true" basedir="${COMAdmin.EXEName}" commandline="/a:install /app:${COMAdmin.Application} /comp:${COMAdmin.COMDLLName}">
+		</exec>
+		<exec program="COMAdmin.exe" append="true" basedir="${COMAdmin.EXEName}" commandline="/a:install /app:${COMAdmin.Application} /comp:${COMAdmin.CoreCOMDLLName}">
+		</exec>
+		<comregister file="GescomPrint.dll" />
+		<comregister file="GescomObjects.dll" />
+		<comregister file="EntityProxy.ocx" />
+	</target>
+        <delete>
+	    <fileset>
+	        <include name="bin\*.lib" />
+	        <include name="bin\*.exp" />
+	        <include name="bin\*.vbr" />
+	        <include name="bin\*.oca" />
+	    </fileset>
+	</delete>
+    </project>
+        

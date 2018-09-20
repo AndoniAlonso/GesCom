@@ -1,0 +1,155 @@
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2496 ,Logged: He validado las tallas 46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2496 ,Logged: He cargado los datos del articulo
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2496 ,Logged: He creado el objeto pedidospendientes
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2496 ,Logged: Llamo a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2496 ,Logged: Acabo de entrar en la función ADD Falso
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: He validado las tallas 46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: He cargado los datos del articulo
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: He creado el objeto pedidospendientes
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Llamo a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Acabo de entrar en la función ADD Verdadero
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Voy a crear el nuevo objeto albaranventaitem
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 10
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 20
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 30
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 40
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 50
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Despues de llamar a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Despues de llamar a BeginEdit
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Establecemos las cantidades por talla46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: He llamado al metodo AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: He validado las tallas 46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: He cargado los datos del articulo
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: He creado el objeto pedidospendientes
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: Llamo a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: Acabo de entrar en la función ADD Verdadero
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: Voy a crear el nuevo objeto albaranventaitem
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: 10
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: 20
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: 30
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: 40
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: 50
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: Despues de llamar a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: Despues de llamar a BeginEdit
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: Establecemos las cantidades por talla46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: He llamado al metodo AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: He validado las tallas 46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: He cargado los datos del articulo
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: He creado el objeto pedidospendientes
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: Llamo a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: Acabo de entrar en la función ADD Verdadero
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: Voy a crear el nuevo objeto albaranventaitem
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: 10
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: 20
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: 30
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: 40
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: 50
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: Despues de llamar a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: Despues de llamar a BeginEdit
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: Establecemos las cantidades por talla46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 548 ,Logged: He llamado al metodo AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: He validado las tallas 46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: He cargado los datos del articulo
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: He creado el objeto pedidospendientes
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: Llamo a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: Acabo de entrar en la función ADD Verdadero
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: Voy a crear el nuevo objeto albaranventaitem
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: 10
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: 20
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: 30
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: 40
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: 50
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: Despues de llamar a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: Despues de llamar a BeginEdit
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: Establecemos las cantidades por talla46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2428 ,Logged: He llamado al metodo AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: He validado las tallas 46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: He cargado los datos del articulo
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: He creado el objeto pedidospendientes
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: Llamo a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: Acabo de entrar en la función ADD Verdadero
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: Voy a crear el nuevo objeto albaranventaitem
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: 10
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: 20
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: 30
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: 40
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: 50
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: Despues de llamar a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: Despues de llamar a BeginEdit
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: Establecemos las cantidades por talla46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2816 ,Logged: He llamado al metodo AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: He validado las tallas 46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: He cargado los datos del articulo
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: He creado el objeto pedidospendientes
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: Llamo a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: Acabo de entrar en la función ADD Verdadero
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: Voy a crear el nuevo objeto albaranventaitem
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: 10
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: 20
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: 30
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: 40
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: 50
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: Despues de llamar a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: Despues de llamar a BeginEdit
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: Establecemos las cantidades por talla46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2480 ,Logged: He llamado al metodo AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: He validado las tallas 46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: He cargado los datos del articulo
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: He creado el objeto pedidospendientes
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: Llamo a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: Acabo de entrar en la función ADD Verdadero
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: Voy a crear el nuevo objeto albaranventaitem
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: 10
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: 20
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: 30
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: 40
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: 50
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: Despues de llamar a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: Despues de llamar a BeginEdit
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: Establecemos las cantidades por talla46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2392 ,Logged: He llamado al metodo AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: He validado las tallas 46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: He cargado los datos del articulo
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: He creado el objeto pedidospendientes
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: Llamo a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: Acabo de entrar en la función ADD Verdadero
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: Voy a crear el nuevo objeto albaranventaitem
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: 10
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: 20
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: 30
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: 40
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: 50
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: Despues de llamar a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: Despues de llamar a BeginEdit
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: Establecemos las cantidades por talla46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 580 ,Logged: He llamado al metodo AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: He validado las tallas 46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: He cargado los datos del articulo
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: He creado el objeto pedidospendientes
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Llamo a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Acabo de entrar en la función ADD Verdadero
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Voy a crear el nuevo objeto albaranventaitem
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 10
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 20
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 30
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 40
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 50
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Despues de llamar a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Despues de llamar a BeginEdit
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Establecemos las cantidades por talla46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: He llamado al metodo AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: He validado las tallas 46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: He cargado los datos del articulo
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: He creado el objeto pedidospendientes
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Llamo a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Acabo de entrar en la función ADD Verdadero
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Voy a crear el nuevo objeto albaranventaitem
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 10
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 20
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 30
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 40
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: 50
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Despues de llamar a la función de AlbaranItemCodigoBarras
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Despues de llamar a BeginEdit
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: Establecemos las cantidades por talla46
+Information Application C:\APPS\gescom\bin\LogEvents.txt: Thread ID: 2904 ,Logged: He llamado al metodo AlbaranItemCodigoBarras

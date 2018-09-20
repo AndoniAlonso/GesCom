@@ -1,0 +1,35 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/****** Objeto: vista dbo.vPedidoCompraPendientes    fecha de la secuencia de comandos: 13/09/2001 20:09:21 ******/
+
+/****** Objeto:  vista dbo.vPedidoCompraPendientes    fecha de la secuencia de comandos: 10/09/2001 18:06:20 ******/
+CREATE VIEW dbo.vPedidoCompraPendientes
+AS
+SELECT PedidoCompraItems.Situacion, 
+    PedidoCompraItems.PedidoCompraItemID AS DocumentoID, 
+    PedidosCompra.Numero, Materiales.CODIGO AS Nombre, 
+    Materiales.NOMBRE AS Descripcion, 
+    PedidoCompraItems.Cantidad, PedidosCompra.Fecha, 
+    PedidosCompra.ProveedorID AS PropietarioID, 
+    PedidosCompra.TemporadaID, 
+    PedidosCompra.EmpresaID
+FROM Materiales INNER JOIN
+    PedidoCompraItems ON 
+    Materiales.MATERIALID = PedidoCompraItems.MaterialID INNER
+     JOIN
+    PedidosCompra ON 
+    PedidoCompraItems.PedidoCompraID = PedidosCompra.PedidoCompraID
+WHERE (PedidoCompraItems.Situacion <> 'C')
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

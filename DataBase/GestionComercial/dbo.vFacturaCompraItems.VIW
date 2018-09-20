@@ -1,0 +1,20 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vFacturaCompraItems
+AS
+SELECT     dbo.FacturaCompraItems.FacturaCompraItemID, dbo.FacturaCompraItems.FacturaCompraID, dbo.FacturaCompraItems.MaterialID, 
+                      dbo.FacturaCompraItems.AlbaranCompraItemID, dbo.FacturaCompraItems.SituacionImpresa, dbo.FacturaCompraItems.Cantidad, 
+                      dbo.FacturaCompraItems.PrecioCostePTA, dbo.FacturaCompraItems.PrecioCosteEUR, dbo.FacturaCompraItems.Descuento, 
+                      dbo.FacturaCompraItems.BrutoPTA, dbo.FacturaCompraItems.BrutoEUR, dbo.Materiales.NOMBRE AS NombreMaterial, dbo.Materiales.CODIGO
+FROM         dbo.FacturaCompraItems INNER JOIN
+                      dbo.Materiales ON dbo.FacturaCompraItems.MaterialID = dbo.Materiales.MATERIALID
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

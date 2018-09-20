@@ -1,0 +1,42 @@
+CREATE TABLE [dbo].[Proveedores] (
+	[ProveedorID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Nombre] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Titular] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Contacto] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[DNINIF] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[DireccionID] [int] NOT NULL ,
+	[BancoID] [int] NOT NULL ,
+	[TransportistaID] [int] NULL ,
+	[CuentaBancariaID] [int] NOT NULL ,
+	[FormaPagoID] [int] NOT NULL ,
+	[MedioPagoID] [int] NULL ,
+	[CuentaContable] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[CuentaContrapartida] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[DatoComercialID] [int] NOT NULL ,
+	CONSTRAINT [PK_Proveedores] PRIMARY KEY  NONCLUSTERED 
+	(
+		[ProveedorID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [IX_Proveedores] UNIQUE  NONCLUSTERED 
+	(
+		[Nombre]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_Proveedores_MediosPago] FOREIGN KEY 
+	(
+		[MedioPagoID]
+	) REFERENCES [dbo].[MediosPago] (
+		[MedioPagoID]
+	),
+	CONSTRAINT [FK_Proveedores_Transportistas] FOREIGN KEY 
+	(
+		[TransportistaID]
+	) REFERENCES [dbo].[Transportistas] (
+		[TransportistaID]
+	) NOT FOR REPLICATION 
+) ON [PRIMARY]
+GO
+
+
+alter table [dbo].[Proveedores] nocheck constraint [FK_Proveedores_Transportistas]
+GO
+

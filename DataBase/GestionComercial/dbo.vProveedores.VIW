@@ -1,0 +1,20 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vProveedores
+AS
+SELECT     dbo.Proveedores.Nombre, dbo.Proveedores.Titular, dbo.Proveedores.Contacto, dbo.Proveedores.DNINIF, dbo.Proveedores.CuentaContable, 
+                      dbo.Direcciones.Calle, dbo.Direcciones.Poblacion, dbo.Direcciones.Provincia, dbo.Direcciones.Telefono1, dbo.Proveedores.ProveedorID
+FROM         dbo.Proveedores INNER JOIN
+                      dbo.Direcciones ON dbo.Proveedores.DireccionID = dbo.Direcciones.DireccionID
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

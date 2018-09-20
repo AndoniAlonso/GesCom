@@ -1,0 +1,9 @@
+setuser
+GO
+
+EXEC sp_addtype N'DIVISA', N'varchar (3)', N'not null'
+GO
+
+setuser
+GO
+

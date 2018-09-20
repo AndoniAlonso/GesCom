@@ -1,0 +1,83 @@
+CREATE TABLE [dbo].[Clientes] (
+	[ClienteID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Nombre] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Titular] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Contacto] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[DNINIF] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[DireccionFiscalID] [int] NOT NULL ,
+	[DireccionEntregaID] [int] NOT NULL ,
+	[TransportistaID] [int] NULL ,
+	[RepresentanteID] [int] NULL ,
+	[CuentaBancariaID] [int] NOT NULL ,
+	[FormaPagoID] [int] NULL ,
+	[DiaPago1] [int] NOT NULL ,
+	[DiaPago2] [int] NOT NULL ,
+	[DiaPago3] [int] NOT NULL ,
+	[CuentaContable] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[DatoComercialID] [int] NOT NULL ,
+	[DatoComercialBID] [int] NOT NULL ,
+	[PorcFacturacionAB] [int] NOT NULL CONSTRAINT [DF_Clientes_PorcFacturacionAB] DEFAULT (100),
+	CONSTRAINT [PK_CLIENTESPROVEEDORES_3__10] PRIMARY KEY  CLUSTERED 
+	(
+		[ClienteID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [IX_Clientes] UNIQUE  NONCLUSTERED 
+	(
+		[Nombre]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [UQ_CLIENTESPROVEEDORES_2__10] UNIQUE  NONCLUSTERED 
+	(
+		[ClienteID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_Clientes_CuentasBancarias] FOREIGN KEY 
+	(
+		[CuentaBancariaID]
+	) REFERENCES [dbo].[CuentasBancarias] (
+		[CuentaBancariaID]
+	),
+	CONSTRAINT [FK_Clientes_DatosComerciales] FOREIGN KEY 
+	(
+		[DatoComercialID]
+	) REFERENCES [dbo].[DatosComerciales] (
+		[DatoComercialID]
+	),
+	CONSTRAINT [FK_Clientes_DatosComercialesB] FOREIGN KEY 
+	(
+		[DatoComercialBID]
+	) REFERENCES [dbo].[DatosComerciales] (
+		[DatoComercialID]
+	),
+	CONSTRAINT [FK_Clientes_Direcciones] FOREIGN KEY 
+	(
+		[DireccionFiscalID]
+	) REFERENCES [dbo].[Direcciones] (
+		[DireccionID]
+	),
+	CONSTRAINT [FK_Clientes_Direcciones1] FOREIGN KEY 
+	(
+		[DireccionEntregaID]
+	) REFERENCES [dbo].[Direcciones] (
+		[DireccionID]
+	),
+	CONSTRAINT [FK_Clientes_FormasDePago] FOREIGN KEY 
+	(
+		[FormaPagoID]
+	) REFERENCES [dbo].[FormasDePago] (
+		[FormaPagoID]
+	),
+	CONSTRAINT [FK_Clientes_Transportistas] FOREIGN KEY 
+	(
+		[TransportistaID]
+	) REFERENCES [dbo].[Transportistas] (
+		[TransportistaID]
+	),
+	CONSTRAINT [FK_CLIENTESPROVEEDORES_9__10] FOREIGN KEY 
+	(
+		[RepresentanteID]
+	) REFERENCES [dbo].[Representantes] (
+		[RepresentanteID]
+	)
+) ON [PRIMARY]
+GO
+
+

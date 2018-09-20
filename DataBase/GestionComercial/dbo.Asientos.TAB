@@ -1,0 +1,35 @@
+CREATE TABLE [dbo].[Asientos] (
+	[AsientoID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Numero] [int] NOT NULL ,
+	[Ejercicio] [char] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Concepto] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[FechaAlta] [datetime] NOT NULL ,
+	[TemporadaID] [int] NOT NULL ,
+	[EmpresaID] [int] NOT NULL ,
+	[Situacion] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	CONSTRAINT [PK_Asientos] PRIMARY KEY  NONCLUSTERED 
+	(
+		[AsientoID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_Asientos_Empresas] FOREIGN KEY 
+	(
+		[EmpresaID]
+	) REFERENCES [dbo].[Empresas] (
+		[EmpresaID]
+	),
+	CONSTRAINT [FK_Asientos_Temporadas] FOREIGN KEY 
+	(
+		[TemporadaID]
+	) REFERENCES [dbo].[Temporadas] (
+		[TemporadaID]
+	)
+) ON [PRIMARY]
+GO
+
+ CREATE  INDEX [IX_Asientos] ON [dbo].[Asientos]([AsientoID]) WITH  FILLFACTOR = 90 ON [PRIMARY]
+GO
+
+ CREATE  INDEX [IX_Asientos_1] ON [dbo].[Asientos]([EmpresaID], [Ejercicio], [Numero]) WITH  FILLFACTOR = 90 ON [PRIMARY]
+GO
+
+

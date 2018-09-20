@@ -1,0 +1,33 @@
+CREATE TABLE [dbo].[OrdenesCorte] (
+	[OrdenCorteID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Fecha] [datetime] NOT NULL ,
+	[FechaCorte] [datetime] NULL ,
+	[Numero] [int] NOT NULL ,
+	[ArticuloID] [int] NOT NULL ,
+	[Observaciones] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[TemporadaID] [int] NOT NULL ,
+	[EmpresaID] [int] NOT NULL ,
+	CONSTRAINT [PK_DOCUMENTOS_1__10] PRIMARY KEY  CLUSTERED 
+	(
+		[OrdenCorteID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [IX_OrdenesCorte] UNIQUE  NONCLUSTERED 
+	(
+		[Numero],
+		[EmpresaID],
+		[TemporadaID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [UQ_DOCUMENTOS_2__10] UNIQUE  NONCLUSTERED 
+	(
+		[OrdenCorteID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_OrdenesCorte_Articulos] FOREIGN KEY 
+	(
+		[ArticuloID]
+	) REFERENCES [dbo].[Articulos] (
+		[ARTICULOID]
+	)
+) ON [PRIMARY]
+GO
+
+

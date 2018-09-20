@@ -1,0 +1,24 @@
+Buildfile: file:///C:/APPS/gescom/Gescom.build
+Target framework: Microsoft .NET Framework 2.0
+Target(s) specified: CompleteBuild 
+
+
+GescomServer:
+
+      [vb6] Building project 'C:\APPS\gescom\GescomServer\GescomServer.vbp'.
+
+Gescom:
+
+      [vb6] Building project 'C:\APPS\gescom\Gescom.vbg'.
+      [vb6] C:\APPS\gescom\GescomUI\ArticuloColorEdit.frm is out of date, recompiling.
+
+AplicacionCOM:
+
+
+CompleteBuild:
+
+
+BUILD SUCCEEDED
+
+Total time: 57.2 seconds.
+

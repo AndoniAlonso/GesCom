@@ -1,0 +1,11 @@
+CREATE TABLE [dbo].[Anios] (
+	[AnioID] [int] IDENTITY (15, 1) NOT NULL ,
+	[Anio] [char] (4) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	CONSTRAINT [PK_Anios] PRIMARY KEY  CLUSTERED 
+	(
+		[AnioID]
+	)  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+

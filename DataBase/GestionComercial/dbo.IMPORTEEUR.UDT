@@ -1,0 +1,9 @@
+setuser
+GO
+
+EXEC sp_addtype N'IMPORTEEUR', N'numeric(14,2)', N'null'
+GO
+
+setuser
+GO
+

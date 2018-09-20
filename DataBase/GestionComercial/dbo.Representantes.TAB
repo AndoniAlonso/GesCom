@@ -1,0 +1,33 @@
+CREATE TABLE [dbo].[Representantes] (
+	[RepresentanteID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Nombre] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[DNINIF] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Contacto] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Zona] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Comision] [PORCENTAJE] NOT NULL ,
+	[IRPF] [PORCENTAJE] NOT NULL ,
+	[IVA] [PORCENTAJE] NOT NULL ,
+	[DireccionID] [int] NOT NULL ,
+	[CuentaContable] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	CONSTRAINT [PK_REPRESENTANTES_1__10] PRIMARY KEY  CLUSTERED 
+	(
+		[RepresentanteID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [IX_Representantes] UNIQUE  NONCLUSTERED 
+	(
+		[Nombre]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [UQ_REPRESENTANTES_2__10] UNIQUE  NONCLUSTERED 
+	(
+		[RepresentanteID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_Representantes_Direcciones] FOREIGN KEY 
+	(
+		[DireccionID]
+	) REFERENCES [dbo].[Direcciones] (
+		[DireccionID]
+	)
+) ON [PRIMARY]
+GO
+
+

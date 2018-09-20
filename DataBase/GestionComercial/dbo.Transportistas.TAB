@@ -1,0 +1,26 @@
+CREATE TABLE [dbo].[Transportistas] (
+	[TransportistaID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Nombre] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Titular] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[DNINIF] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Contacto] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Zona] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[DireccionID] [int] NOT NULL ,
+	CONSTRAINT [PK_Transportistas] PRIMARY KEY  NONCLUSTERED 
+	(
+		[TransportistaID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [IX_Transportistas] UNIQUE  NONCLUSTERED 
+	(
+		[Nombre]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_Transportistas_Direcciones] FOREIGN KEY 
+	(
+		[DireccionID]
+	) REFERENCES [dbo].[Direcciones] (
+		[DireccionID]
+	)
+) ON [PRIMARY]
+GO
+
+

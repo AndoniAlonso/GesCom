@@ -1,0 +1,32 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vFacturasVenta
+AS
+SELECT     dbo.FacturasVenta.FacturaVentaID, dbo.FacturasVenta.Numero, dbo.FacturasVenta.Fecha, RTRIM(dbo.FacturasVenta.Observaciones) 
+                      AS Observaciones, RTRIM(dbo.Clientes.Nombre) AS NombreCliente, RTRIM(dbo.Representantes.Nombre) AS NombreRepresentante, 
+                      RTRIM(dbo.Transportistas.Nombre) AS NombreTransportista, dbo.FacturasVenta.TemporadaID, dbo.FacturasVenta.EmpresaID, 
+                      dbo.FacturasVenta.BrutoPTA, dbo.FacturasVenta.BrutoEUR, dbo.FacturasVenta.SituacionContable, dbo.FacturasVenta.DescuentoPTA, 
+                      dbo.FacturasVenta.DescuentoEUR, dbo.FacturasVenta.IVAPTA, dbo.FacturasVenta.IVAEUR, dbo.FacturasVenta.RecargoPTA, 
+                      dbo.FacturasVenta.RecargoEUR, dbo.FacturasVenta.NetoPTA, dbo.FacturasVenta.NetoEUR, SUM(dbo.FacturaVentaItems.ComisionEUR) 
+                      AS ComisionEUR, dbo.Clientes.ClienteID, YEAR(dbo.FacturasVenta.Fecha) AS Anio, dbo.FacturasVenta.BaseImponibleEUR
+FROM         dbo.FacturasVenta INNER JOIN
+                      dbo.Clientes ON dbo.FacturasVenta.ClienteID = dbo.Clientes.ClienteID INNER JOIN
+                      dbo.Representantes ON dbo.FacturasVenta.RepresentanteID = dbo.Representantes.RepresentanteID INNER JOIN
+                      dbo.Transportistas ON dbo.FacturasVenta.TransportistaID = dbo.Transportistas.TransportistaID LEFT OUTER JOIN
+                      dbo.FacturaVentaItems ON dbo.FacturasVenta.FacturaVentaID = dbo.FacturaVentaItems.FacturaVentaID
+GROUP BY dbo.FacturasVenta.FacturaVentaID, dbo.FacturasVenta.Numero, dbo.FacturasVenta.Fecha, RTRIM(dbo.FacturasVenta.Observaciones), 
+                      dbo.Clientes.Nombre, dbo.Representantes.Nombre, dbo.Transportistas.Nombre, dbo.FacturasVenta.TemporadaID, dbo.FacturasVenta.EmpresaID, 
+                      dbo.FacturasVenta.BrutoPTA, dbo.FacturasVenta.BrutoEUR, dbo.FacturasVenta.SituacionContable, dbo.FacturasVenta.DescuentoPTA, 
+                      dbo.FacturasVenta.DescuentoEUR, dbo.FacturasVenta.IVAPTA, dbo.FacturasVenta.IVAEUR, dbo.FacturasVenta.RecargoPTA, 
+                      dbo.FacturasVenta.RecargoEUR, dbo.FacturasVenta.NetoPTA, dbo.FacturasVenta.NetoEUR, dbo.Clientes.ClienteID, 
+                      dbo.FacturasVenta.BaseImponibleEUR
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

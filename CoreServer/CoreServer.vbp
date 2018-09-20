@@ -1,0 +1,60 @@
+Type=OleDll
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\WINDOWS\system32\stdole2.tlb#OLE Automation
+Reference=*\G{2A005C00-A5DE-11CF-9E66-00AA00A3F464}#1.0#0#..\..\..\WINDOWS\system32\COMSVCS.DLL#COM+ Services Type Library
+Reference=*\G{3D5C6BF0-69A3-11D0-B393-00A0C9055D8E}#1.0#0#..\..\..\Program Files\Common Files\designer\MSDERUN.DLL#Microsoft Data Environment Instance 1.0
+Reference=*\G{EF53050B-882E-4776-B643-EDA472E8E3F2}#2.7#0#..\..\..\Program Files\Common Files\system\ado\msado27.tlb#Microsoft ActiveX Data Objects 2.7 Library
+Reference=*\G{00000300-0000-0010-8000-00AA006D2EA4}#2.7#0#..\..\..\Program Files\Common Files\system\ado\msador15.dll#Microsoft ActiveX Data Objects Recordset 2.7 Library
+Class=Buffer; Buffer.cls
+Module=CoreTypes; ..\CoreObjects\CoreTypes.bas
+Class=CoreConsultaDWPersist; CoreConsultaDWPersist.cls
+Startup="(None)"
+HelpFile=""
+Title="CoreServer"
+ExeName32="CoreServer.dll"
+Path32="..\Bin"
+Command32=""
+Name="CoreServer"
+HelpContextID="0"
+CompatibleMode="2"
+CompatibleEXE32="..\bin\Copy of CoreServer.dll"
+VersionCompatible32="1"
+MajorVer=1
+MinorVer=0
+RevisionVer=0
+AutoIncrementVer=0
+ServerSupportFiles=1
+VersionCompanyName="4"
+CompilationType=0
+OptimizationType=0
+FavorPentiumPro(tm)=0
+CodeViewDebugInfo=-1
+NoAliasing=0
+BoundsCheck=0
+OverflowCheck=0
+FlPointCheck=0
+FDIVCheck=0
+UnroundedFP=0
+StartMode=1
+Unattended=-1
+Retained=1
+ThreadPerObject=0
+MaxNumberOfThreads=1
+DebugStartupOption=0
+
+[MS Transaction Server]
+AutoRefresh=1
+
+[TaskList]
+Num=2
+
+[TASK1]
+Description=Vistas del servidor de Elena
+Status=0
+Priority=2
+AssignedTo=
+Comment=Traer las vistas, definir las nuevas tablas y probar los scripts de actualización. Después programar la función en el coreserver y testearla
+
+[TASK2]
+Description=Consultar (y actualizar automaticamente)
+Status=0
+Priority=1

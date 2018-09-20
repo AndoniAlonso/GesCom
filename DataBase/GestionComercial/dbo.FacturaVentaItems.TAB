@@ -1,0 +1,43 @@
+CREATE TABLE [dbo].[FacturaVentaItems] (
+	[FacturaVentaItemID] [int] IDENTITY (1, 1) NOT NULL ,
+	[FacturaVentaID] [int] NOT NULL ,
+	[ArticuloColorID] [int] NULL ,
+	[Descripcion] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[AlbaranVentaItemID] [int] NULL ,
+	[SituacionImpresa] [char] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Cantidad] [CANTIDAD] NOT NULL ,
+	[PrecioVentaPTA] [IMPORTEPTA] NOT NULL ,
+	[PrecioVentaEUR] [IMPORTEEUR] NOT NULL ,
+	[Descuento] [PORCENTAJE] NOT NULL ,
+	[BrutoPTA] [IMPORTEPTA] NOT NULL ,
+	[BrutoEUR] [IMPORTEEUR] NOT NULL ,
+	[Comision] [PORCENTAJE] NOT NULL ,
+	[ComisionPTA] [IMPORTEPTA] NOT NULL ,
+	[ComisionEUR] [IMPORTEEUR] NOT NULL ,
+	[TemporadaID] [int] NOT NULL ,
+	CONSTRAINT [PK_FacturaVentaItems] PRIMARY KEY  NONCLUSTERED 
+	(
+		[FacturaVentaItemID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_FacturaVentaItems_AlbaranVentaItems] FOREIGN KEY 
+	(
+		[AlbaranVentaItemID]
+	) REFERENCES [dbo].[AlbaranVentaItems] (
+		[AlbaranVentaItemID]
+	),
+	CONSTRAINT [FK_FacturaVentaItems_ArticuloColores] FOREIGN KEY 
+	(
+		[ArticuloColorID]
+	) REFERENCES [dbo].[ArticuloColores] (
+		[ARTICULOCOLORID]
+	),
+	CONSTRAINT [FK_FacturaVentaItems_FacturasVenta] FOREIGN KEY 
+	(
+		[FacturaVentaID]
+	) REFERENCES [dbo].[FacturasVenta] (
+		[FacturaVentaID]
+	)
+) ON [PRIMARY]
+GO
+
+

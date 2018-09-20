@@ -1,0 +1,15 @@
+Buildfile: file:///C:/APPS/gescom/bin/GescomServer.build
+Target framework: Microsoft .NET Framework 2.0
+Target(s) specified: CompleteBuild 
+
+
+GesComUpdate:
+
+[svn-update] Command name: update
+
+BUILD FAILED
+
+Could not find svn.exe
+
+Total time: 0.1 seconds.
+

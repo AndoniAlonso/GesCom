@@ -1,0 +1,25 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/****** Objeto:  vista dbo.vRemesas    fecha de la secuencia de comandos: 10/09/2001 18:06:21 ******/
+CREATE VIEW dbo.vRemesas
+AS
+SELECT     dbo.CobrosPagos.FechaDomiciliacion, dbo.Bancos.BancoID, dbo.CuentasBancarias.NombreEntidad, dbo.CobrosPagos.SituacionComercial, COUNT(*) 
+                      AS NumeroEfectos, SUM(dbo.CobrosPagos.ImportePTA) AS ImportePTA, SUM(dbo.CobrosPagos.ImporteEUR) AS ImporteEUR, 
+                      dbo.CobrosPagos.SituacionContable
+FROM         dbo.Bancos INNER JOIN
+                      dbo.CobrosPagos ON dbo.Bancos.BancoID = dbo.CobrosPagos.BancoID INNER JOIN
+                      dbo.CuentasBancarias ON dbo.Bancos.CuentaBancariaID = dbo.CuentasBancarias.CuentaBancariaID
+WHERE     (dbo.CobrosPagos.Tipo = 'C') AND (dbo.CobrosPagos.SituacionComercial IN ('S', 'R'))
+GROUP BY dbo.CobrosPagos.FechaDomiciliacion, dbo.Bancos.BancoID, dbo.CuentasBancarias.NombreEntidad, dbo.CobrosPagos.SituacionComercial, 
+                      dbo.CobrosPagos.SituacionContable
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

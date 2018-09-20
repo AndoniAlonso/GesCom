@@ -1,0 +1,1 @@
+"e:\Archivos de programa\nAnt\bin\nant.Exe" -buildfile:Gescom.build -logger:NAnt.Core.DefaultLogger -logfile:build.log -D:TortoiseSVN_Path="e:\archivos de programa\tortoisesvn\bin"

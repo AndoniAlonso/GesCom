@@ -1,0 +1,32 @@
+CREATE TABLE [dbo].[FacturaCompraItems] (
+	[FacturaCompraItemID] [int] IDENTITY (1, 1) NOT NULL ,
+	[FacturaCompraID] [int] NOT NULL ,
+	[MaterialID] [int] NULL ,
+	[AlbaranCompraItemID] [int] NULL ,
+	[SituacionImpresa] [char] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Cantidad] [CANTIDAD] NOT NULL ,
+	[PrecioCostePTA] [IMPORTEPTA] NOT NULL ,
+	[PrecioCosteEUR] [PRECIOMATERIALEUR] NOT NULL ,
+	[Descuento] [PORCENTAJE] NOT NULL ,
+	[BrutoPTA] [IMPORTEPTA] NOT NULL ,
+	[BrutoEUR] [IMPORTEEUR] NOT NULL ,
+	CONSTRAINT [PK_FacturaCompraItems] PRIMARY KEY  NONCLUSTERED 
+	(
+		[FacturaCompraItemID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_FacturaCompraItems_FacturasCompra] FOREIGN KEY 
+	(
+		[FacturaCompraID]
+	) REFERENCES [dbo].[FacturasCompra] (
+		[FacturaCompraID]
+	),
+	CONSTRAINT [FK_FacturaCompraItems_Materiales] FOREIGN KEY 
+	(
+		[MaterialID]
+	) REFERENCES [dbo].[Materiales] (
+		[MATERIALID]
+	)
+) ON [PRIMARY]
+GO
+
+

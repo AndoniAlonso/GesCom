@@ -1,0 +1,30 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vrptDeclaracion347
+AS
+SELECT     dbo.Clientes.DNINIF, dbo.Clientes.Nombre, 'Entrega de bienes' AS COperacion, 
+                      SUM(dbo.FacturasVenta.BaseImponibleEUR + dbo.FacturasVenta.IVAEUR + dbo.FacturasVenta.RecargoEUR) AS ImporteBruto, 
+                      YEAR(dbo.FacturasVenta.Fecha) AS AnioDeclaracion, dbo.FacturasVenta.EmpresaID
+FROM         dbo.Clientes INNER JOIN
+                      dbo.FacturasVenta ON dbo.Clientes.ClienteID = dbo.FacturasVenta.ClienteID
+GROUP BY dbo.Clientes.DNINIF, dbo.Clientes.ClienteID, dbo.Clientes.Nombre, YEAR(dbo.FacturasVenta.Fecha), dbo.FacturasVenta.EmpresaID
+HAVING      (SUM(dbo.FacturasVenta.BrutoEUR) > 3000)
+UNION
+SELECT     dbo.Proveedores.DNINIF, dbo.Proveedores.Nombre, 'Adquisición de bienes ' AS COperacion, 
+                      SUM(dbo.FacturasCompra.BaseImponibleEUR + dbo.FacturasCompra.IVAEUR + dbo.FacturasCompra.RecargoEUR) AS ImporteBruto, 
+                      YEAR(dbo.FacturasCompra.Fecha) AS AnioDeclaracion, dbo.FacturasCompra.EmpresaID
+FROM         dbo.Proveedores INNER JOIN
+                      dbo.FacturasCompra ON dbo.Proveedores.ProveedorID = dbo.FacturasCompra.ProveedorID
+GROUP BY dbo.Proveedores.DNINIF, dbo.Proveedores.ProveedorID, dbo.Proveedores.Nombre, YEAR(dbo.FacturasCompra.Fecha), 
+                      dbo.FacturasCompra.EmpresaID
+HAVING      (SUM(dbo.FacturasCompra.BrutoEUR) > 3000)
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

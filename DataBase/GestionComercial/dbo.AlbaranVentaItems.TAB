@@ -1,0 +1,66 @@
+CREATE TABLE [dbo].[AlbaranVentaItems] (
+	[AlbaranVentaItemID] [int] IDENTITY (1, 1) NOT NULL ,
+	[AlbaranVentaID] [int] NOT NULL ,
+	[ArticuloColorID] [int] NULL ,
+	[Descripcion] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[PedidoVentaItemID] [int] NULL ,
+	[Situacion] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[CantidadT36] [CANTIDAD] NOT NULL ,
+	[CantidadT38] [CANTIDAD] NOT NULL ,
+	[CantidadT40] [CANTIDAD] NOT NULL ,
+	[CantidadT42] [CANTIDAD] NOT NULL ,
+	[CantidadT44] [CANTIDAD] NOT NULL ,
+	[CantidadT46] [CANTIDAD] NOT NULL ,
+	[CantidadT48] [CANTIDAD] NOT NULL ,
+	[CantidadT50] [CANTIDAD] NOT NULL ,
+	[CantidadT52] [CANTIDAD] NOT NULL ,
+	[CantidadT54] [CANTIDAD] NOT NULL ,
+	[CantidadT56] [CANTIDAD] NOT NULL ,
+	[PrecioVentaPTA] [IMPORTEPTA] NOT NULL ,
+	[PrecioVentaEUR] [IMPORTEEUR] NOT NULL ,
+	[Descuento] [PORCENTAJE] NOT NULL ,
+	[BrutoPTA] [IMPORTEPTA] NOT NULL ,
+	[BrutoEUR] [IMPORTEEUR] NOT NULL ,
+	[Comision] [PORCENTAJE] NOT NULL ,
+	[TemporadaID] [int] NOT NULL ,
+	[FacturadoAB] [bit] NOT NULL CONSTRAINT [DF_AlbaranVentaItems_FacturadoAB] DEFAULT (0),
+	[FacturaVentaItemIDA] [int] NULL ,
+	[FacturaVentaItemIDB] [int] NULL ,
+	CONSTRAINT [PK_AlbaranVentaItems] PRIMARY KEY  NONCLUSTERED 
+	(
+		[AlbaranVentaItemID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_AlbaranVentaItems_AlbaranesVenta] FOREIGN KEY 
+	(
+		[AlbaranVentaID]
+	) REFERENCES [dbo].[AlbaranesVenta] (
+		[AlbaranVentaID]
+	),
+	CONSTRAINT [FK_AlbaranVentaItems_ArticuloColores] FOREIGN KEY 
+	(
+		[ArticuloColorID]
+	) REFERENCES [dbo].[ArticuloColores] (
+		[ARTICULOCOLORID]
+	),
+	CONSTRAINT [FK_AlbaranVentaItems_FacturaVentaItems] FOREIGN KEY 
+	(
+		[FacturaVentaItemIDA]
+	) REFERENCES [dbo].[FacturaVentaItems] (
+		[FacturaVentaItemID]
+	),
+	CONSTRAINT [FK_AlbaranVentaItems_FacturaVentaItems1] FOREIGN KEY 
+	(
+		[FacturaVentaItemIDB]
+	) REFERENCES [dbo].[FacturaVentaItems] (
+		[FacturaVentaItemID]
+	),
+	CONSTRAINT [FK_AlbaranVentaItems_PedidoVentaItems] FOREIGN KEY 
+	(
+		[PedidoVentaItemID]
+	) REFERENCES [dbo].[PedidoVentaItems] (
+		[PedidoVentaItemID]
+	)
+) ON [PRIMARY]
+GO
+
+

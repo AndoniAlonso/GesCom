@@ -1,0 +1,2 @@
+Listado de ventas|t=vTPVReportVentas&amp;f= [Fecha-Hora], [Numero], [Nombre vendedor], [Código artículo], [Descripcion], [Importe], [Nombre Centro]&amp;c=CentroGestionID = _qt1_qt&amp;sf=Importe&amp;st=SUM&amp;sd=Total&amp;sd2=Sum total&amp;rpt=Listado de ventas&amp;sort=&amp;lastsort=&amp;cp=&amp;ps=25
+ReportTPVCierreCaja|t=vTPVCierreCaja&amp;f= [Fecha-Hora], [Numero], [NombreRepresentante], [Importe], [Devolucion], [Entregado], [Cambio]&amp;c=&amp;sf=Importe&amp;st=SUM&amp;sd=Total&amp;sd2=Sum total&amp;rpt=ReportTPVCierreCaja&amp;sort=&amp;lastsort=&amp;cp=&amp;ps=25

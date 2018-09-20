@@ -1,0 +1,41 @@
+CREATE TABLE [dbo].[MoviMateriales] (
+	[MOVIMATERIALID] [int] IDENTITY (1, 1) NOT NULL ,
+	[FECHA] [datetime] NOT NULL ,
+	[MATERIALID] [int] NOT NULL ,
+	[TIPO] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[CONCEPTO] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[CANTIDAD] [CANTIDAD] NOT NULL ,
+	[STOCKFINAL] [CANTIDAD] NOT NULL ,
+	[PRECIOEUR] [PRECIOMATERIALEUR] NOT NULL ,
+	[PRECIOPTA] [IMPORTEPTA] NOT NULL ,
+	[PRECIOCOSTEEUR] [PRECIOMATERIALEUR] NOT NULL ,
+	[PRECIOCOSTEPTA] [IMPORTEPTA] NOT NULL ,
+	[DocumentoID] [int] NULL ,
+	[TipoDocumento] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	CONSTRAINT [PK_MoviMateriales] PRIMARY KEY  NONCLUSTERED 
+	(
+		[MOVIMATERIALID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [UQ_MOVIMIENTOS_13__10] UNIQUE  NONCLUSTERED 
+	(
+		[MOVIMATERIALID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_MoviMateriales_Materiales] FOREIGN KEY 
+	(
+		[MATERIALID]
+	) REFERENCES [dbo].[Materiales] (
+		[MATERIALID]
+	)
+) ON [PRIMARY]
+GO
+
+ CREATE  INDEX [IX_MoviMateriales] ON [dbo].[MoviMateriales]([FECHA]) WITH  FILLFACTOR = 90 ON [PRIMARY]
+GO
+
+ CREATE  INDEX [IX_MoviMateriales_TipoDocumento] ON [dbo].[MoviMateriales]([TipoDocumento], [DocumentoID]) WITH  FILLFACTOR = 90 ON [PRIMARY]
+GO
+
+ CREATE  INDEX [IX_MoviMateriales_TipoDocumento_DocumentoID] ON [dbo].[MoviMateriales]([TipoDocumento], [DocumentoID]) WITH  FILLFACTOR = 90 ON [PRIMARY]
+GO
+
+

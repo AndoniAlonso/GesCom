@@ -1,0 +1,20 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vPedidoVentaItemsSinTallas
+AS
+SELECT     PedidoVentaItemID, PedidoVentaID, ArticuloColorID, Situacion, SituacionCorte, 
+                      CantidadT36 + CantidadT38 + CantidadT40 + CantidadT42 + CantidadT44 + CantidadT46 + CantidadT48 + CantidadT50 + CantidadT52 + CantidadT54 + CantidadT56
+                       AS TotalPedido, 
+                      ServidoT36 + ServidoT38 + ServidoT40 + ServidoT42 + ServidoT44 + ServidoT46 + ServidoT48 + ServidoT50 + ServidoT52 + ServidoT54 + ServidoT56 AS
+                       TotalServido, PrecioVentaEUR, Descuento, BrutoEUR, Comision, TemporadaID, Observaciones
+FROM         dbo.PedidoVentaItems
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

@@ -1,0 +1,26 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vOrdenesCorte
+AS
+SELECT     dbo.OrdenesCorte.OrdenCorteID, dbo.OrdenesCorte.Fecha, dbo.OrdenesCorte.FechaCorte, dbo.OrdenesCorte.Numero, dbo.OrdenesCorte.ArticuloID, 
+                      dbo.OrdenesCorte.Observaciones, dbo.OrdenesCorte.TemporadaID, dbo.OrdenesCorte.EmpresaID, dbo.vNombreArticulos.Nombre, 
+                      SUM(dbo.OrdenCorteItems.CantidadT36 + dbo.OrdenCorteItems.CantidadT38 + dbo.OrdenCorteItems.CantidadT40 + dbo.OrdenCorteItems.CantidadT42 +
+                       dbo.OrdenCorteItems.CantidadT44 + dbo.OrdenCorteItems.CantidadT46 + dbo.OrdenCorteItems.CantidadT48 + dbo.OrdenCorteItems.CantidadT50 + dbo.OrdenCorteItems.CantidadT52
+                       + dbo.OrdenCorteItems.CantidadT54 + dbo.OrdenCorteItems.CantidadT56) AS Cantidad
+FROM         dbo.OrdenesCorte INNER JOIN
+                      dbo.vNombreArticulos ON dbo.OrdenesCorte.ArticuloID = dbo.vNombreArticulos.ARTICULOID INNER JOIN
+                      dbo.OrdenCorteItems ON dbo.OrdenesCorte.OrdenCorteID = dbo.OrdenCorteItems.OrdenCorteID
+GROUP BY dbo.OrdenesCorte.OrdenCorteID, dbo.OrdenesCorte.Fecha, dbo.OrdenesCorte.FechaCorte, dbo.OrdenesCorte.Numero, dbo.OrdenesCorte.ArticuloID, 
+                      dbo.OrdenesCorte.Observaciones, dbo.OrdenesCorte.TemporadaID, dbo.OrdenesCorte.EmpresaID, dbo.vNombreArticulos.Nombre
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

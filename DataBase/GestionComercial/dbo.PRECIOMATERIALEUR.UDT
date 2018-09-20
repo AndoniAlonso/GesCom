@@ -1,0 +1,9 @@
+setuser
+GO
+
+EXEC sp_addtype N'PRECIOMATERIALEUR', N'numeric(14,3)', N'not null'
+GO
+
+setuser
+GO
+

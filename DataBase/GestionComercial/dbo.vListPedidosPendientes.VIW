@@ -1,0 +1,47 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vListPedidosPendientes
+AS
+SELECT     TOP 100 PERCENT dbo.PedidoVentaItems.PedidoVentaID, dbo.PedidoVentaItems.PedidoVentaItemID, dbo.Clientes.ClienteID, 
+                      dbo.PedidosVenta.Numero, RTRIM(dbo.Clientes.Nombre) AS NombreCliente, dbo.PedidoVentaItems.ArticuloColorID, 
+                      dbo.vNombreArticuloColores.Nombre AS NombreArticuloColor, dbo.PedidoVentaItems.SituacionCorte, 
+                      dbo.PedidoVentaItems.CantidadT36 - dbo.PedidoVentaItems.ServidoT36 AS PendienteT36, 
+                      dbo.PedidoVentaItems.CantidadT38 - dbo.PedidoVentaItems.ServidoT38 AS PendienteT38, 
+                      dbo.PedidoVentaItems.CantidadT40 - dbo.PedidoVentaItems.ServidoT40 AS PendienteT40, 
+                      dbo.PedidoVentaItems.CantidadT42 - dbo.PedidoVentaItems.ServidoT42 AS PendienteT42, 
+                      dbo.PedidoVentaItems.CantidadT44 - dbo.PedidoVentaItems.ServidoT44 AS PendienteT44, 
+                      dbo.PedidoVentaItems.CantidadT46 - dbo.PedidoVentaItems.ServidoT46 AS PendienteT46, 
+                      dbo.PedidoVentaItems.CantidadT48 - dbo.PedidoVentaItems.ServidoT48 AS PendienteT48, 
+                      dbo.PedidoVentaItems.CantidadT50 - dbo.PedidoVentaItems.ServidoT50 AS PendienteT50, 
+                      dbo.PedidoVentaItems.CantidadT52 - dbo.PedidoVentaItems.ServidoT52 AS PendienteT52, 
+                      dbo.PedidoVentaItems.CantidadT54 - dbo.PedidoVentaItems.ServidoT54 AS PendienteT54, 
+                      dbo.PedidoVentaItems.CantidadT56 - dbo.PedidoVentaItems.ServidoT56 AS PendienteT56, 
+                      dbo.PedidoVentaItems.CantidadT36 - dbo.PedidoVentaItems.ServidoT36 + dbo.PedidoVentaItems.CantidadT38 - dbo.PedidoVentaItems.ServidoT38 + dbo.PedidoVentaItems.CantidadT40
+                       - dbo.PedidoVentaItems.ServidoT40 + dbo.PedidoVentaItems.CantidadT42 - dbo.PedidoVentaItems.ServidoT42 + dbo.PedidoVentaItems.CantidadT44 - dbo.PedidoVentaItems.ServidoT44
+                       + dbo.PedidoVentaItems.CantidadT46 - dbo.PedidoVentaItems.ServidoT46 + dbo.PedidoVentaItems.CantidadT48 - dbo.PedidoVentaItems.ServidoT48 + dbo.PedidoVentaItems.CantidadT50
+                       - dbo.PedidoVentaItems.ServidoT50 + dbo.PedidoVentaItems.CantidadT52 - dbo.PedidoVentaItems.ServidoT52 + dbo.PedidoVentaItems.CantidadT54 - dbo.PedidoVentaItems.ServidoT54
+                       + dbo.PedidoVentaItems.CantidadT56 - dbo.PedidoVentaItems.ServidoT56 AS PendienteTotal, dbo.PedidosVenta.TemporadaID, 
+                      dbo.PedidosVenta.EmpresaID, dbo.PedidosVenta.Fecha, dbo.ArticuloColores.ARTICULOID, dbo.Articulos.PRENDAID, dbo.Articulos.MODELOID, 
+                      dbo.Articulos.SERIEID, dbo.vNombreArticuloColores.NombreModelo, dbo.vNombreArticuloColores.NombreSerie
+FROM         dbo.PedidoVentaItems INNER JOIN
+                      dbo.PedidosVenta ON dbo.PedidoVentaItems.PedidoVentaID = dbo.PedidosVenta.PedidoVentaID INNER JOIN
+                      dbo.Clientes ON dbo.PedidosVenta.ClienteID = dbo.Clientes.ClienteID INNER JOIN
+                      dbo.vNombreArticuloColores ON dbo.PedidoVentaItems.ArticuloColorID = dbo.vNombreArticuloColores.ARTICULOCOLORID INNER JOIN
+                      dbo.ArticuloColores ON dbo.PedidoVentaItems.ArticuloColorID = dbo.ArticuloColores.ARTICULOCOLORID INNER JOIN
+                      dbo.Articulos ON dbo.ArticuloColores.ARTICULOID = dbo.Articulos.ARTICULOID
+WHERE     (dbo.PedidoVentaItems.CantidadT36 - dbo.PedidoVentaItems.ServidoT36 + dbo.PedidoVentaItems.CantidadT38 - dbo.PedidoVentaItems.ServidoT38 + dbo.PedidoVentaItems.CantidadT40
+                       - dbo.PedidoVentaItems.ServidoT40 + dbo.PedidoVentaItems.CantidadT42 - dbo.PedidoVentaItems.ServidoT42 + dbo.PedidoVentaItems.CantidadT44 - dbo.PedidoVentaItems.ServidoT44
+                       + dbo.PedidoVentaItems.CantidadT46 - dbo.PedidoVentaItems.ServidoT46 + dbo.PedidoVentaItems.CantidadT48 - dbo.PedidoVentaItems.ServidoT48 + dbo.PedidoVentaItems.CantidadT50
+                       - dbo.PedidoVentaItems.ServidoT50 + dbo.PedidoVentaItems.CantidadT52 - dbo.PedidoVentaItems.ServidoT52 + dbo.PedidoVentaItems.CantidadT54 - dbo.PedidoVentaItems.ServidoT54
+                       + dbo.PedidoVentaItems.CantidadT56 - dbo.PedidoVentaItems.ServidoT56 <> 0)
+ORDER BY dbo.PedidosVenta.Numero, dbo.PedidoVentaItems.PedidoVentaItemID
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
