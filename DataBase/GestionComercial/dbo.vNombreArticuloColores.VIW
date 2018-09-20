@@ -1,0 +1,41 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/****** Objeto: vista dbo.vNombreArticuloColores    fecha de la secuencia de comandos: 13/09/2001 20:09:22 ******/
+
+/****** Objeto:  vista dbo.vNombreArticuloColores    fecha de la secuencia de comandos: 10/09/2001 18:06:21 ******/
+CREATE VIEW dbo.vNombreArticuloColores
+AS
+SELECT ArticuloColores.ARTICULOCOLORID, Articulos.ARTICULOID, 
+    ArticuloColores.NOMBRE + '-' + RTRIM(Prendas.NOMBRE) 
+    + ' ' + RTRIM(Modelos.NOMBRE) 
+    + ' ' + RTRIM(Series.NOMBRE) 
+    + ' ' + RTRIM(ArticuloColores.NOMBRECOLOR) AS Nombre, 
+    Prendas.NOMBRE AS NombrePrenda, 
+    Modelos.NOMBRE AS NombreModelo, 
+    Series.NOMBRE AS NombreSerie, 
+    ArticuloColores.NOMBRECOLOR, 
+    ArticuloColores.NOMBRE AS Codigo, 
+    Prendas.CODIGO AS CodigoPrenda, 
+    Modelos.CODIGO AS CodigoModelo, 
+    Series.CODIGO AS CodigoSerie
+FROM ArticuloColores INNER JOIN
+    Articulos ON 
+    ArticuloColores.ARTICULOID = Articulos.ARTICULOID INNER JOIN
+    Prendas ON 
+    Articulos.PRENDAID = Prendas.PrendaID INNER JOIN
+    Modelos ON 
+    Articulos.MODELOID = Modelos.MODELOID INNER JOIN
+    Series ON Articulos.SERIEID = Series.SERIEID
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

@@ -1,0 +1,9 @@
+setuser
+GO
+
+EXEC sp_addtype N'IDENTIFICADOR', N'numeric(8,0)', N'null'
+GO
+
+setuser
+GO
+

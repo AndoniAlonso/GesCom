@@ -1,0 +1,32 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vClientes
+AS
+SELECT     dbo.Clientes.ClienteID, RTRIM(Direcciones1.Calle) AS Calle, RTRIM(Direcciones1.CodigoPostal) + '-' + RTRIM(Direcciones1.Poblacion) AS Poblacion, 
+                      Direcciones1.CodigoPostal, RTRIM(Direcciones1.Provincia) AS Provincia, RTRIM(Direcciones1.Telefono1) AS Telefono, RTRIM(dbo.Clientes.Nombre) 
+                      AS Nombre, RTRIM(dbo.Clientes.Titular) AS Titular, dbo.Clientes.Contacto, dbo.Clientes.DNINIF, RIGHT(dbo.Clientes.CuentaContable, 5) 
+                      AS CuentaContable, Direcciones2.Calle AS CalleEntrega, Direcciones2.Poblacion AS PoblaciónEntrega, 
+                      Direcciones2.CodigoPostal AS CodigoPostalEntrega, RTRIM(dbo.FormasDePago.Nombre) AS FormaPago, 
+                      dbo.Transportistas.Nombre AS NombreTransportista, dbo.CuentasBancarias.NombreEntidad, dbo.CuentasBancarias.NombreSucursal, 
+                      dbo.DatosComerciales.Descuento, dbo.DatosComerciales.RecargoEquivalencia, dbo.DatosComerciales.IVA, RTRIM(dbo.Representantes.Nombre) 
+                      AS NombreRepresentante, 
+                      REPLACE(dbo.CuentasBancarias.Entidad + '-' + dbo.CuentasBancarias.Sucursal + '-' + dbo.CuentasBancarias.Control + '-' + dbo.CuentasBancarias.Cuenta,
+                       ' ', '') AS CuentaBancaria, dbo.Clientes.PorcFacturacionAB
+FROM         dbo.Clientes INNER JOIN
+                      dbo.Direcciones Direcciones1 ON dbo.Clientes.DireccionFiscalID = Direcciones1.DireccionID INNER JOIN
+                      dbo.Direcciones Direcciones2 ON dbo.Clientes.DireccionEntregaID = Direcciones2.DireccionID INNER JOIN
+                      dbo.FormasDePago ON dbo.Clientes.FormaPagoID = dbo.FormasDePago.FormaPagoID INNER JOIN
+                      dbo.Transportistas ON dbo.Clientes.TransportistaID = dbo.Transportistas.TransportistaID INNER JOIN
+                      dbo.CuentasBancarias ON dbo.Clientes.CuentaBancariaID = dbo.CuentasBancarias.CuentaBancariaID INNER JOIN
+                      dbo.DatosComerciales ON dbo.Clientes.DatoComercialID = dbo.DatosComerciales.DatoComercialID INNER JOIN
+                      dbo.Representantes ON dbo.Clientes.RepresentanteID = dbo.Representantes.RepresentanteID
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

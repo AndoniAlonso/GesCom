@@ -1,0 +1,21 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+CREATE VIEW dbo.vMoviMaterialOrdenCorte
+AS
+SELECT     dbo.MoviMateriales.MOVIMATERIALID, dbo.OrdenesCorte.Numero, dbo.OrdenesCorte.TemporadaID, dbo.OrdenesCorte.EmpresaID
+FROM         dbo.OrdenesCorte INNER JOIN
+                      dbo.OrdenCorteItems ON dbo.OrdenesCorte.OrdenCorteID = dbo.OrdenCorteItems.OrdenCorteID INNER JOIN
+                      dbo.MoviMateriales ON dbo.OrdenCorteItems.OrdenCorteItemID = dbo.MoviMateriales.DocumentoID
+WHERE     (dbo.MoviMateriales.TipoDocumento = 'O')
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

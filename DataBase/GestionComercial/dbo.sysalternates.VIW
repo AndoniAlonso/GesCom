@@ -1,0 +1,15 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW sysalternates AS SELECT
+    suid = convert(smallint, suser_id(substring(name, 2, 63))),
+    altsuid = convert(smallint, suser_id(suser_sname(user_sid(altuid))))
+FROM sysusers WHERE isaliased = 1
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

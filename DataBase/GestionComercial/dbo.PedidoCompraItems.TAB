@@ -1,0 +1,21 @@
+CREATE TABLE [dbo].[PedidoCompraItems] (
+	[PedidoCompraItemID] [int] IDENTITY (1, 1) NOT NULL ,
+	[PedidoCompraID] [int] NOT NULL ,
+	[MaterialID] [int] NOT NULL ,
+	[Situacion] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Cantidad] [CANTIDAD] NOT NULL ,
+	[Servido] [CANTIDAD] NOT NULL ,
+	[PrecioCostePTA] [IMPORTEPTA] NOT NULL ,
+	[PrecioCosteEUR] [PRECIOMATERIALEUR] NOT NULL ,
+	[Descuento] [PORCENTAJE] NOT NULL ,
+	[BrutoPTA] [IMPORTEPTA] NOT NULL ,
+	[BrutoEUR] [IMPORTEEUR] NOT NULL ,
+	[Comision] [PORCENTAJE] NOT NULL ,
+	CONSTRAINT [PK_PedidoCompraItems] PRIMARY KEY  NONCLUSTERED 
+	(
+		[PedidoCompraItemID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+

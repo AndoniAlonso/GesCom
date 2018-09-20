@@ -1,0 +1,32 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vAlbaranesVenta
+AS
+SELECT     dbo.AlbaranesVenta.AlbaranVentaID, dbo.AlbaranesVenta.Fecha, dbo.AlbaranesVenta.Numero, RTRIM(dbo.AlbaranesVenta.Observaciones) 
+                      AS Observaciones, dbo.AlbaranesVenta.TotalBrutoPTA, dbo.AlbaranesVenta.TotalBrutoEUR, dbo.AlbaranesVenta.TemporadaID, 
+                      dbo.AlbaranesVenta.EmpresaID, RTRIM(dbo.Clientes.Nombre) AS NombreCliente, RTRIM(dbo.Representantes.Nombre) AS NombreRepresentante, 
+                      RTRIM(dbo.Transportistas.Nombre) AS NombreTransportista, 
+                      SUM(dbo.AlbaranVentaItems.CantidadT36 + dbo.AlbaranVentaItems.CantidadT38 + dbo.AlbaranVentaItems.CantidadT40 + dbo.AlbaranVentaItems.CantidadT42
+                       + dbo.AlbaranVentaItems.CantidadT44 + dbo.AlbaranVentaItems.CantidadT46 + dbo.AlbaranVentaItems.CantidadT48 + dbo.AlbaranVentaItems.CantidadT50
+                       + dbo.AlbaranVentaItems.CantidadT52 + dbo.AlbaranVentaItems.CantidadT54 + dbo.AlbaranVentaItems.CantidadT56) AS Cantidad, 
+                      CAST(dbo.AlbaranesVenta.FacturadoAB | MAX(CASE dbo.AlbaranVentaItems.Situacion WHEN 'F' THEN 1 ELSE 0 END) AS BIT) AS Facturado, 
+                      dbo.AlbaranesVenta.ClienteID, dbo.AlbaranesVenta.RepresentanteID, dbo.AlbaranesVenta.TransportistaID
+FROM         dbo.AlbaranesVenta INNER JOIN
+                      dbo.Clientes ON dbo.AlbaranesVenta.ClienteID = dbo.Clientes.ClienteID INNER JOIN
+                      dbo.Representantes ON dbo.AlbaranesVenta.RepresentanteID = dbo.Representantes.RepresentanteID INNER JOIN
+                      dbo.Transportistas ON dbo.AlbaranesVenta.TransportistaID = dbo.Transportistas.TransportistaID INNER JOIN
+                      dbo.AlbaranVentaItems ON dbo.AlbaranesVenta.AlbaranVentaID = dbo.AlbaranVentaItems.AlbaranVentaID
+GROUP BY dbo.AlbaranesVenta.AlbaranVentaID, dbo.AlbaranesVenta.Fecha, dbo.AlbaranesVenta.Numero, dbo.AlbaranesVenta.Observaciones, 
+                      dbo.AlbaranesVenta.TotalBrutoPTA, dbo.AlbaranesVenta.TotalBrutoEUR, dbo.AlbaranesVenta.TemporadaID, dbo.AlbaranesVenta.EmpresaID, 
+                      RTRIM(dbo.Transportistas.Nombre), RTRIM(dbo.Representantes.Nombre), RTRIM(dbo.Clientes.Nombre), dbo.AlbaranesVenta.FacturadoAB, 
+                      dbo.AlbaranesVenta.ClienteID, dbo.AlbaranesVenta.RepresentanteID, dbo.AlbaranesVenta.TransportistaID
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

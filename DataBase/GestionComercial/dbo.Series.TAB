@@ -1,0 +1,48 @@
+CREATE TABLE [dbo].[Series] (
+	[SerieID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Nombre] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[TemporadaID] [int] NOT NULL ,
+	[Codigo] [varchar] (2) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[MaterialID] [int] NOT NULL ,
+	[Composicion1] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[PorcComposicion1] [PORCENTAJE] NULL ,
+	[Composicion2] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[PorcComposicion2] [PORCENTAJE] NULL ,
+	[Composicion3] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[PorcComposicion3] [PORCENTAJE] NULL ,
+	[Composicion4] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[PorcComposicion4] [PORCENTAJE] NULL ,
+	CONSTRAINT [PK___9__10] PRIMARY KEY  CLUSTERED 
+	(
+		[SerieID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [IX_Series] UNIQUE  NONCLUSTERED 
+	(
+		[TemporadaID],
+		[Codigo]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [UQ_SERIES_10__10] UNIQUE  NONCLUSTERED 
+	(
+		[SerieID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [UQ_SERIES_12__10] UNIQUE  NONCLUSTERED 
+	(
+		[TemporadaID],
+		[Nombre]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_Series_Materiales] FOREIGN KEY 
+	(
+		[MaterialID]
+	) REFERENCES [dbo].[Materiales] (
+		[MATERIALID]
+	),
+	CONSTRAINT [FK_Series_Temporadas] FOREIGN KEY 
+	(
+		[TemporadaID]
+	) REFERENCES [dbo].[Temporadas] (
+		[TemporadaID]
+	)
+) ON [PRIMARY]
+GO
+
+

@@ -1,0 +1,30 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vNombreArticulos
+AS
+SELECT Articulos.ARTICULOID, 
+    Prendas.CODIGO + Modelos.CODIGO + Series.Codigo + '-' + RTRIM(Prendas.NOMBRE)
+     + ' ' + RTRIM(Modelos.NOMBRE) 
+    + ' ' + RTRIM(Series.Nombre) AS Nombre, 
+    Prendas.NOMBRE AS NombrePrenda, 
+    Modelos.NOMBRE AS NombreModelo, 
+    Series.Nombre AS NombreSerie, 
+    Prendas.CODIGO AS CodigoPrenda, 
+    Modelos.CODIGO AS CodigoModelo, 
+    Series.Codigo AS CodigoSerie, Articulos.TEMPORADAID
+FROM Articulos INNER JOIN
+    Prendas ON 
+    Articulos.PRENDAID = Prendas.PrendaID INNER JOIN
+    Modelos ON 
+    Articulos.MODELOID = Modelos.MODELOID INNER JOIN
+    Series ON Articulos.SERIEID = Series.SerieID
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

@@ -1,0 +1,56 @@
+CREATE TABLE [dbo].[PedidoVentaItems] (
+	[PedidoVentaItemID] [int] IDENTITY (1, 1) NOT NULL ,
+	[PedidoVentaID] [int] NOT NULL ,
+	[ArticuloColorID] [int] NOT NULL ,
+	[Situacion] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[SituacionCorte] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[CantidadT36] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_CantidadT36] DEFAULT (0),
+	[CantidadT38] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_CantidadT38] DEFAULT (0),
+	[CantidadT40] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_CantidadT40] DEFAULT (0),
+	[CantidadT42] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_CantidadT42] DEFAULT (0),
+	[CantidadT44] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_CantidadT44] DEFAULT (0),
+	[CantidadT46] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_CantidadT46] DEFAULT (0),
+	[CantidadT48] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_CantidadT48] DEFAULT (0),
+	[CantidadT50] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_CantidadT50] DEFAULT (0),
+	[CantidadT52] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_CantidadT52] DEFAULT (0),
+	[CantidadT54] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_CantidadT54] DEFAULT (0),
+	[CantidadT56] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_CantidadT56] DEFAULT (0),
+	[ServidoT36] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_ServidoT36] DEFAULT (0),
+	[ServidoT38] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_ServidoT38] DEFAULT (0),
+	[ServidoT40] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_ServidoT40] DEFAULT (0),
+	[ServidoT42] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_ServidoT42] DEFAULT (0),
+	[ServidoT44] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_ServidoT44] DEFAULT (0),
+	[ServidoT46] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_ServidoT46] DEFAULT (0),
+	[ServidoT48] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_ServidoT48] DEFAULT (0),
+	[ServidoT50] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_ServidoT50] DEFAULT (0),
+	[ServidoT52] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_ServidoT52] DEFAULT (0),
+	[ServidoT54] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_ServidoT54] DEFAULT (0),
+	[ServidoT56] [CANTIDAD] NOT NULL CONSTRAINT [DF_PedidoVentaItem_ServidoT56] DEFAULT (0),
+	[PrecioVentaPTA] [IMPORTEPTA] NOT NULL CONSTRAINT [DF_PedidoVentaItems_CostePTA] DEFAULT (0),
+	[PrecioVentaEUR] [IMPORTEEUR] NOT NULL CONSTRAINT [DF_PedidoVentaItems_CostePTA1] DEFAULT (0),
+	[Descuento] [PORCENTAJE] NOT NULL CONSTRAINT [DF_PedidoVentaItem_Descuento] DEFAULT (0),
+	[BrutoPTA] [IMPORTEPTA] NOT NULL CONSTRAINT [DF_PedidoVentaItem_BrutoPTA] DEFAULT (0),
+	[BrutoEUR] [IMPORTEEUR] NOT NULL CONSTRAINT [DF_PedidoVentaItem_BrutoEUR] DEFAULT (0),
+	[Comision] [PORCENTAJE] NOT NULL CONSTRAINT [DF_PedidoVentaItem_Comision] DEFAULT (0),
+	[TemporadaID] [int] NOT NULL ,
+	[Observaciones] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	CONSTRAINT [PK_PedidoVentaItems] PRIMARY KEY  NONCLUSTERED 
+	(
+		[PedidoVentaItemID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_PedidoVentaItems_ArticuloColores] FOREIGN KEY 
+	(
+		[ArticuloColorID]
+	) REFERENCES [dbo].[ArticuloColores] (
+		[ARTICULOCOLORID]
+	),
+	CONSTRAINT [FK_PedidoVentaItems_PedidosVenta] FOREIGN KEY 
+	(
+		[PedidoVentaID]
+	) REFERENCES [dbo].[PedidosVenta] (
+		[PedidoVentaID]
+	)
+) ON [PRIMARY]
+GO
+
+

@@ -1,0 +1,30 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/****** Objeto: vista dbo.vEstrModelosMateriales    fecha de la secuencia de comandos: 13/09/2001 20:09:22 ******/
+
+/****** Objeto:  vista dbo.vEstrModelosMateriales    fecha de la secuencia de comandos: 10/09/2001 18:06:20 ******/
+CREATE VIEW dbo.vEstrModelosMateriales
+AS
+SELECT EstrModelos.MATERIALID, EstrModelos.MODELOID, 
+    EstrModelos.ESTRMODELOID, EstrModelos.CANTIDAD, 
+    EstrModelos.OBSERVACIONES, 
+    Materiales.NOMBRE AS NOMBREMATERIAL, 
+    Materiales.CODIGO, Materiales.STOCKACTUAL, 
+    Materiales.STOCKPENDIENTE, Materiales.PRECIOCOSTEPTA, 
+    Materiales.PRECIOCOSTEEUR
+FROM EstrModelos INNER JOIN
+    Materiales ON 
+    EstrModelos.MATERIALID = Materiales.MATERIALID
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

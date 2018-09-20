@@ -1,0 +1,35 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vFichasPedido
+AS
+SELECT     dbo.PedidosVenta.Numero, dbo.PedidosVenta.Fecha, dbo.Clientes.Nombre AS NombreCliente, dbo.Modelos.NOMBRE AS NombreModelo, 
+                      dbo.PedidosVenta.FechaTopeServicio, dbo.Series.SerieID, 
+                      SUM(dbo.PedidoVentaItems.CantidadT36 + dbo.PedidoVentaItems.CantidadT38 + dbo.PedidoVentaItems.CantidadT40 + dbo.PedidoVentaItems.CantidadT42
+                       + dbo.PedidoVentaItems.CantidadT44 + dbo.PedidoVentaItems.CantidadT46 + dbo.PedidoVentaItems.CantidadT48 + dbo.PedidoVentaItems.CantidadT50
+                       + dbo.PedidoVentaItems.CantidadT52 + dbo.PedidoVentaItems.CantidadT54 + dbo.PedidoVentaItems.CantidadT56) AS Cantidad, 
+                      dbo.OrdenesCorte.Fecha AS FechaOrden, dbo.OrdenesCorte.Numero AS NumeroOrden, RIGHT(dbo.ArticuloColores.NOMBRE, 2) AS CodigoColor, 
+                      ISNULL(dbo.PedidoVentaItems.Observaciones, '') AS Observaciones
+FROM         dbo.ArticuloColores INNER JOIN
+                      dbo.PedidosVenta INNER JOIN
+                      dbo.PedidoVentaItems ON dbo.PedidosVenta.PedidoVentaID = dbo.PedidoVentaItems.PedidoVentaID INNER JOIN
+                      dbo.Clientes ON dbo.PedidosVenta.ClienteID = dbo.Clientes.ClienteID ON 
+                      dbo.ArticuloColores.ARTICULOCOLORID = dbo.PedidoVentaItems.ArticuloColorID INNER JOIN
+                      dbo.Articulos ON dbo.ArticuloColores.ARTICULOID = dbo.Articulos.ARTICULOID INNER JOIN
+                      dbo.Series ON dbo.Articulos.SERIEID = dbo.Series.SerieID INNER JOIN
+                      dbo.Modelos ON dbo.Articulos.MODELOID = dbo.Modelos.MODELOID LEFT OUTER JOIN
+                      dbo.OrdenesCorte INNER JOIN
+                      dbo.OrdenCorteItems ON dbo.OrdenesCorte.OrdenCorteID = dbo.OrdenCorteItems.OrdenCorteID ON 
+                      dbo.PedidoVentaItems.PedidoVentaItemID = dbo.OrdenCorteItems.PedidoVentaItemID
+GROUP BY dbo.OrdenesCorte.Fecha, dbo.OrdenesCorte.Numero, dbo.ArticuloColores.NOMBRECOLOR, dbo.PedidosVenta.Observaciones, 
+                      dbo.PedidosVenta.Numero, dbo.PedidosVenta.Fecha, dbo.Clientes.Nombre, dbo.Modelos.NOMBRE, dbo.PedidosVenta.FechaTopeServicio, 
+                      dbo.Series.SerieID, dbo.ArticuloColores.NOMBRE, dbo.PedidoVentaItems.Observaciones
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

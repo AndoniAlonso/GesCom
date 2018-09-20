@@ -1,0 +1,33 @@
+CREATE TABLE [dbo].[AlbaranCompraItems] (
+	[AlbaranCompraItemID] [int] IDENTITY (1, 1) NOT NULL ,
+	[AlbaranCompraID] [int] NOT NULL ,
+	[MaterialID] [int] NULL ,
+	[PedidoCompraItemID] [int] NULL ,
+	[Situacion] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Cantidad] [CANTIDAD] NOT NULL ,
+	[PrecioCostePTA] [IMPORTEPTA] NOT NULL ,
+	[PrecioCosteEUR] [PRECIOMATERIALEUR] NOT NULL ,
+	[Descuento] [PORCENTAJE] NOT NULL ,
+	[BrutoPTA] [IMPORTEPTA] NOT NULL ,
+	[BrutoEUR] [IMPORTEEUR] NOT NULL ,
+	[Comision] [PORCENTAJE] NOT NULL ,
+	CONSTRAINT [PK_AlbaranCompraItems] PRIMARY KEY  NONCLUSTERED 
+	(
+		[AlbaranCompraItemID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_AlbaranCompraItems_AlbaranesCompra] FOREIGN KEY 
+	(
+		[AlbaranCompraID]
+	) REFERENCES [dbo].[AlbaranesCompra] (
+		[AlbaranCompraID]
+	),
+	CONSTRAINT [FK_AlbaranCompraItems_Materiales] FOREIGN KEY 
+	(
+		[MaterialID]
+	) REFERENCES [dbo].[Materiales] (
+		[MATERIALID]
+	)
+) ON [PRIMARY]
+GO
+
+

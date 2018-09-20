@@ -1,0 +1,37 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vEstadisticaPedidoVenta
+AS
+SELECT     dbo.PedidoVentaItems.PedidoVentaItemID AS EstadisticaVentaID, 
+                      dbo.PedidoVentaItems.CantidadT36 + dbo.PedidoVentaItems.CantidadT38 + dbo.PedidoVentaItems.CantidadT40 + dbo.PedidoVentaItems.CantidadT42 + dbo.PedidoVentaItems.CantidadT44
+                       + dbo.PedidoVentaItems.CantidadT46 + dbo.PedidoVentaItems.CantidadT48 + dbo.PedidoVentaItems.CantidadT50 + dbo.PedidoVentaItems.CantidadT52
+                       + dbo.PedidoVentaItems.CantidadT54 + dbo.PedidoVentaItems.CantidadT56 AS Cantidad, dbo.PedidoVentaItems.BrutoEUR, dbo.PedidosVenta.Fecha, 
+                      dbo.Articulos.ARTICULOID, RTRIM(dbo.Articulos.NOMBRE) AS NombreArticulo, dbo.ArticuloColores.ARTICULOCOLORID, 
+                      RTRIM(dbo.ArticuloColores.NOMBRE) AS NombreArticuloColor, dbo.Modelos.MODELOID, RTRIM(dbo.Modelos.NOMBRE) AS NombreModelo, 
+                      dbo.Series.SerieID, RTRIM(dbo.Series.Nombre) AS NombreSerie, dbo.Prendas.PrendaID, RTRIM(dbo.Prendas.NOMBRE) AS NombrePrenda, 
+                      dbo.Representantes.RepresentanteID, RTRIM(dbo.Representantes.Nombre) AS NombreRepresentante, dbo.Clientes.ClienteID, 
+                      RTRIM(dbo.Clientes.Nombre) AS NombreCliente, dbo.Temporadas.TemporadaID, RTRIM(dbo.Temporadas.Nombre) AS NombreTemporada, 
+                      dbo.Empresas.EmpresaID, dbo.Empresas.Nombre AS NombreEmpresa, dbo.Direcciones.Provincia AS NombreProvincia, 
+                      RTRIM(dbo.ArticuloColores.NOMBRECOLOR) AS NombreColor, dbo.Articulos.PRECIOCOSTEEUR
+FROM         dbo.PedidoVentaItems INNER JOIN
+                      dbo.PedidosVenta ON dbo.PedidoVentaItems.PedidoVentaID = dbo.PedidosVenta.PedidoVentaID INNER JOIN
+                      dbo.Empresas ON dbo.PedidosVenta.EmpresaID = dbo.Empresas.EmpresaID INNER JOIN
+                      dbo.Temporadas ON dbo.PedidosVenta.TemporadaID = dbo.Temporadas.TemporadaID INNER JOIN
+                      dbo.ArticuloColores ON dbo.PedidoVentaItems.ArticuloColorID = dbo.ArticuloColores.ARTICULOCOLORID INNER JOIN
+                      dbo.Articulos ON dbo.ArticuloColores.ARTICULOID = dbo.Articulos.ARTICULOID INNER JOIN
+                      dbo.Modelos ON dbo.Temporadas.TemporadaID = dbo.Modelos.TEMPORADAID AND dbo.Articulos.MODELOID = dbo.Modelos.MODELOID INNER JOIN
+                      dbo.Series ON dbo.Articulos.SERIEID = dbo.Series.SerieID INNER JOIN
+                      dbo.Prendas ON dbo.Articulos.PRENDAID = dbo.Prendas.PrendaID INNER JOIN
+                      dbo.Representantes ON dbo.PedidosVenta.RepresentanteID = dbo.Representantes.RepresentanteID INNER JOIN
+                      dbo.Clientes ON dbo.PedidosVenta.ClienteID = dbo.Clientes.ClienteID INNER JOIN
+                      dbo.Direcciones ON dbo.Clientes.DireccionFiscalID = dbo.Direcciones.DireccionID
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

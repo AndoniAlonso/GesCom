@@ -1,0 +1,63 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/****** Objeto: vista dbo.vArticuloColores    fecha de la secuencia de comandos: 13/09/2001 20:09:22 ******/
+
+/****** Objeto:  vista dbo.vArticuloColores    fecha de la secuencia de comandos: 10/09/2001 18:06:21 ******/
+CREATE VIEW dbo.vArticuloColores
+AS
+SELECT ArticuloColores.ARTICULOCOLORID, 
+    ArticuloColores.NOMBRE + '-' + RTRIM(Prendas.NOMBRE) 
+    + ' ' + RTRIM(Modelos.NOMBRE) 
+    + ' ' + RTRIM(Series.NOMBRE) 
+    + ' ' + RTRIM(ArticuloColores.NOMBRECOLOR) 
+    AS NOMBREARTICULO, ArticuloColores.ARTICULOID, 
+    ArticuloColores.TEMPORADAID, ArticuloColores.NOMBRE, 
+    ArticuloColores.NOMBRECOLOR, 
+    ArticuloColores.STOCKACTUALT36, 
+    ArticuloColores.STOCKACTUALT38, 
+    ArticuloColores.STOCKACTUALT40, 
+    ArticuloColores.STOCKACTUALT42, 
+    ArticuloColores.STOCKACTUALT44, 
+    ArticuloColores.STOCKACTUALT46, 
+    ArticuloColores.STOCKACTUALT48, 
+    ArticuloColores.STOCKACTUALT50, 
+    ArticuloColores.STOCKACTUALT52, 
+    ArticuloColores.STOCKACTUALT54, 
+    ArticuloColores.STOCKACTUALT56, 
+    ArticuloColores.STOCKPENDIENTET36, 
+    ArticuloColores.STOCKPENDIENTET38, 
+    ArticuloColores.STOCKPENDIENTET40, 
+    ArticuloColores.STOCKPENDIENTET42, 
+    ArticuloColores.STOCKPENDIENTET44, 
+    ArticuloColores.STOCKPENDIENTET46, 
+    ArticuloColores.STOCKPENDIENTET48, 
+    ArticuloColores.STOCKPENDIENTET50, 
+    ArticuloColores.STOCKPENDIENTET52, 
+    ArticuloColores.STOCKPENDIENTET54, 
+    ArticuloColores.STOCKPENDIENTET56, Articulos.PRENDAID, 
+    Articulos.MODELOID, Articulos.SERIEID, 
+    Articulos.PRECIOVENTAEUR, Articulos.PRECIOVENTAPTA, 
+    Articulos.PRECIOCOSTEEUR, Articulos.PRECIOCOSTEPTA, 
+    Articulos.LOTEECONOMICO, Articulos.STOCKMAXIMO, 
+    Articulos.STOCKMINIMO, Articulos.STOCKACTUAL, 
+    Articulos.STOCKPENDIENTE
+FROM ArticuloColores INNER JOIN
+    Articulos ON 
+    ArticuloColores.ARTICULOID = Articulos.ARTICULOID INNER JOIN
+    Modelos ON 
+    Articulos.MODELOID = Modelos.MODELOID INNER JOIN
+    Series ON Articulos.SERIEID = Series.SERIEID INNER JOIN
+    Prendas ON Articulos.PRENDAID = Prendas.PrendaID
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

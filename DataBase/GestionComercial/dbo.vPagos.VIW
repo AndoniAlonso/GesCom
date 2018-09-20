@@ -1,0 +1,30 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vPagos
+AS
+SELECT     dbo.CobrosPagos.CobroPagoID, dbo.CobrosPagos.Tipo, dbo.CobrosPagos.Vencimiento, RTRIM(dbo.Proveedores.Nombre) AS NombrePersona, 
+                      RTRIM(dbo.FormasDePago.Nombre) AS formapago, dbo.FacturasCompra.Numero AS NumeroFactura, dbo.CobrosPagos.NumeroGiro, 
+                      dbo.CobrosPagos.SituacionComercial, dbo.CobrosPagos.SituacionContable, dbo.CobrosPagos.ImportePTA, dbo.CobrosPagos.ImporteEUR, 
+                      dbo.CobrosPagos.FechaEmision, dbo.CobrosPagos.FechaDomiciliacion, dbo.CobrosPagos.FechaContable, dbo.CobrosPagos.EmpresaID, 
+                      dbo.CobrosPagos.TemporadaID, dbo.vBancos.NombreEntidad AS NombreBanco, dbo.CobrosPagos.PersonaID, 
+                      dbo.Temporadas.Nombre AS NombreTemporada, dbo.Temporadas.Codigo, dbo.MediosPago.NombreAbreviado, 
+                      RTRIM(dbo.FacturasCompra.SuReferencia) AS SuReferencia, dbo.MediosPago.MedioPagoID, dbo.CobrosPagos.FacturaID
+FROM         dbo.CobrosPagos INNER JOIN
+                      dbo.FormasDePago ON dbo.CobrosPagos.FormaPagoID = dbo.FormasDePago.FormaPagoID INNER JOIN
+                      dbo.Proveedores ON dbo.CobrosPagos.PersonaID = dbo.Proveedores.ProveedorID INNER JOIN
+                      dbo.Temporadas ON dbo.CobrosPagos.TemporadaID = dbo.Temporadas.TemporadaID LEFT OUTER JOIN
+                      dbo.MediosPago ON dbo.CobrosPagos.MedioPagoID = dbo.MediosPago.MedioPagoID LEFT OUTER JOIN
+                      dbo.FacturasCompra ON dbo.CobrosPagos.FacturaID = dbo.FacturasCompra.FacturaCompraID LEFT OUTER JOIN
+                      dbo.vBancos ON dbo.CobrosPagos.BancoID = dbo.vBancos.BancoID
+WHERE     (dbo.CobrosPagos.Tipo = 'P')
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

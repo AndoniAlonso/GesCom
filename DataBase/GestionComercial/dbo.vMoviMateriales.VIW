@@ -1,0 +1,21 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vMoviMateriales
+AS
+SELECT     dbo.MoviMateriales.MOVIMATERIALID, dbo.Materiales.NOMBRE, dbo.Materiales.STOCKACTUAL, dbo.Materiales.STOCKPENDIENTE, 
+                      dbo.MoviMateriales.FECHA, dbo.MoviMateriales.TIPO, dbo.MoviMateriales.CONCEPTO, dbo.MoviMateriales.CANTIDAD, 
+                      dbo.MoviMateriales.STOCKFINAL, dbo.MoviMateriales.DocumentoID, dbo.MoviMateriales.TipoDocumento, dbo.vMoviMaterialDocumentos.Numero, 
+                      dbo.MoviMateriales.PRECIOEUR, dbo.Materiales.CODIGO
+FROM         dbo.MoviMateriales INNER JOIN
+                      dbo.Materiales ON dbo.MoviMateriales.MATERIALID = dbo.Materiales.MATERIALID LEFT OUTER JOIN
+                      dbo.vMoviMaterialDocumentos ON dbo.MoviMateriales.MOVIMATERIALID = dbo.vMoviMaterialDocumentos.MOVIMATERIALID
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

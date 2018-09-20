@@ -1,0 +1,111 @@
+- Instalar windows 2003 server creando una maquina virtual de 20GB, dos particiones de 14 y 6 respectivamente.
+- Elegir como un grupo de trabajo.
+- instalarlo como servidor típico.
+- instalar el servidor de aplicaciones IIS con ASP.NET y FrontPage extensions
+- Instalar el servidor de archivos y compartir la carpeta C:\APPS
+- Instalar SQLServer 2000
+- Instalar los analysis services
+- Instalar el service pack de SQLServer 2000
+- Instalar el service pack de SQLServer 2000 analysis services
+- Instalar el navegador firefox
+- Instalar el WindowsInstaler 3.0
+- Instalar el .NET 2.0
+- Instalar el Tortoise svn
+- Instalar el nant bajandolo del repositorio.
+- Instalar el innosetup
+- Instalar el winmerge
+- Instalar el MDAC 2.8
+- Instalar el COMAdmin bajándolo del repositorio
+- Instalar el PDFCreator para poder verificar la impresión.
+- Crear la carpeta Gescom en APPS y copiar el contenido de la carpeta BIN
+- Copiar el archivo .build para instalar la aplicación.
+- Creamos un script para hacer el create database de la base de datos de GestionComercial.
+- Creo un paquete DTS para pasar todos los componentes.
+- Paso el comparador de BBDD para ver si falta algun elemento.
+- Modificar el udl para que apunte a la Base de datos buena.
+- Copiar la carpeta Componentes del instalador del InnoSetup.
+- Editamos el Win.ini e incluimos la clausula que indica el servidor persist y el numero de terminal.
+	[GesCom]
+	PERSIST_SERVER=nombredelservidor
+	TerminalID=1
+
+>>> Todo esto si queremos depurar en el propio servidor.
+>>>- Instalo el visual studio 6.0
+>>>- Instalo el service pack para el visual studio 6.0
+>>>- Instalo el Janus
+
+- Hay que incluir en la función CreateOwner a los usuarios a los que se autoriza a utilizar la aplicación
+ 
+
+- Alimentamos manualmente la tabla de direcciones
+- Alimentamos manualmente la tabla de centros de gestión
+- Alimentamos manualmente la tabla de almacenes
+- Damos de alta manualmente una temporada y una empresa.
+- Alimentamos manualmente la tabla de parametros.
+- Alimentamos manualmente la tabla de terminales.
+- Alimentamos manualmente la tabla de formas de pago.
+- Alimentamos un transportista y un Banco desde el programa.
+- Copiamos de la instalación original las siguientes tablas: Anios, consultacampos, consultaitems, consultas,
+							     MediosPago, Operadores, ParametrosAplicacion, Prendas,
+
+- Extraemos la información del fichero de proveedores a un TXT con VUTIL -extract ELENPROV.DAT
+- Pasamos la información a una hoja excel separando los campos con los siguientes campos:
+	03 Codig-P Pic 9(5).
+        05 Nombr-P x(35)
+        05 Ident-P Pic X(15).
+        05 Dirfi-P Pic X(35).
+        05 Pobfi-P Pic X(35).
+        05 Provi-P Pic X(15).
+        05 Pais-P Pic X(15).
+        05 Tele1-P Pic X(10).
+        05 Tele2-P Pic X(10).
+        05 Fax-P Pic X(10).
+        05 Perso-P Pic X(20).
+- Concatenar al código de proveedor 40000
+- Colocar el fax y los telefonos en su columna correspondiente.
+- Colocar el pais en su columna correspondiente. Corregir los errores de PARIS, etc
+- Separar el código postal de la población.
+- ponemos la forma de pagoID como 5 ( a 60 días, aunque a confirmar con Juan).
+- Descuentos y RE al 0% y el IVA al 16%.
+
+
+- Establecemos el valor del parametro ALMAPRED.
+- Establecemos el valor del parametro ALMATRAN.
+- Damos de alta el cliente predeterminado para operaciones de TPV y lo asignamos al parametro CLIEPRED
+- Damos de alta el material predeterminado y lo asignamos al parametro MATEPRED.
+
+- Revisar la lista de prendas. Lo mejor es ir dándolos de alta a medida que se necesitan.
+
+
+
+- Tostar un CD con lo siguiente:
+	- Máquina virtual
+	- El compresor 7z.
+	- El programa de etiquetas.
+
+
+- Actualizar la versión de binarios del repositorio.
+- Instalar los cambios en la BBDD.
+- Con el administrador del IIS crear el directorio virtual "GescomWebTPV"que apunta a la carpeta ubicada en bin.
+- En SQLServer dar permisos al usuario del IIS (IUSR_ELENASERVER) para acceder en lectura a la BBDD de GestionComercial.
+- Cambiar el tiempo de fin de sesión a 600 minutos.
+- OJO comprobar que en la tabla de empresas las empresas A y B son respectivamente los numero 2 y 4. Para ello dar de alta la nº 4 y cambiar la 3 por la 2, será necesario cambiar las relaciones para que se actualicen automaticamente. 
+- El WinMerge conviene ponerlo como programa de dif externo al SubVersion.
+- OJO comprobar que el cliente CLIENTES TPV tiene 0 como IVA en A y en B.
+
+- Se ha producido un error en el eventlog que avisa de que IIS no puede crear un directorio de cache, se toma la siguiente solución:
+	The problem is that cache directory does not have write access by default for the IWAM_XXXX user. 
+
+	Here is how to fix this. 
+
+	1 - Open IIS Manager on the server 
+	2 - Expand "Application Pools" 
+	3 - Right Click on the pool that Event ID is complaing about 
+	4 - Click on "Identity" tab and write down the user name 
+	5 - If you're running AD prepend the domain name to the username 
+	6 - Edit security of C:\WINDOWS\system32\inetsrv\ASP Compiled Templates to add the user from step 4 (if running on AD make sure to add domain name) 
+	7 - Stop and Start the pool. 
+	
+	The pool's create PIDXXXXX.ID direcotry for caches, that is why they need write access. 
+
+	No es más que una solución de quedar bien, porque las aplicaciones funcionan perfectamente sin esta caché.

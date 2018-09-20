@@ -1,0 +1,1 @@
+nant -buildfile:Gescom.build -logger:NAnt.Core.DefaultLogger -logfile:build.log

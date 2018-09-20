@@ -1,0 +1,21 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vAlbaranesCompra
+AS
+SELECT     dbo.AlbaranesCompra.AlbaranCompraID, dbo.AlbaranesCompra.Fecha, dbo.AlbaranesCompra.Numero, RTRIM(dbo.AlbaranesCompra.Observaciones) 
+                      AS Observaciones, dbo.AlbaranesCompra.TotalBrutoPTA, dbo.AlbaranesCompra.TotalBrutoEUR, dbo.AlbaranesCompra.TemporadaID, 
+                      dbo.AlbaranesCompra.EmpresaID, RTRIM(dbo.Transportistas.Nombre) AS NombreTransportista, RTRIM(dbo.Proveedores.Nombre) 
+                      AS NombreProveedor, dbo.Proveedores.ProveedorID
+FROM         dbo.AlbaranesCompra INNER JOIN
+                      dbo.Proveedores ON dbo.AlbaranesCompra.ProveedorID = dbo.Proveedores.ProveedorID LEFT OUTER JOIN
+                      dbo.Transportistas ON dbo.AlbaranesCompra.TransportistaID = dbo.Transportistas.TransportistaID
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

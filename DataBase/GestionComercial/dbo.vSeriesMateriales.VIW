@@ -1,0 +1,21 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vSeriesMateriales
+AS
+SELECT     dbo.Series.SerieID, RTRIM(dbo.Series.Nombre) AS Nombre, dbo.Series.Codigo, RTRIM(dbo.Materiales.NOMBRE) AS NombreMaterial, 
+                      dbo.Series.TemporadaID, dbo.Materiales.AnchuraTela, RTRIM(dbo.Series.Composicion1) AS Composicion1, dbo.Materiales.PorcComposicion1, 
+                      RTRIM(dbo.Series.Composicion2) AS Composicion2, dbo.Materiales.PorcComposicion2, RTRIM(dbo.Series.Composicion3) AS Composicion3, 
+                      RTRIM(dbo.Series.Composicion4) AS Composicion4, dbo.Materiales.PorcComposicion3, dbo.Materiales.PorcComposicion4, 
+                      dbo.Materiales.PRECIOCOSTEPTA, dbo.Materiales.PRECIOCOSTEEUR, dbo.Materiales.CODIGO AS CodigoMaterial
+FROM         dbo.Series INNER JOIN
+                      dbo.Materiales ON dbo.Series.MaterialID = dbo.Materiales.MATERIALID
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

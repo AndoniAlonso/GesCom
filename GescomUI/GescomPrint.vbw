@@ -1,0 +1,13 @@
+PrintFactura = 22, 22, 703, 609, C
+PrintClass = 44, 44, 558, 463, C
+GCEuro = 0, 0, 0, 0, C
+CSB58 = 0, 0, 0, 0, C
+PrintAlbaran = 88, 88, 857, 541, C
+PrintOrdenCorte = 154, 154, 785, 699, C
+PrintTabla = 66, 66, 580, 485, C
+PrintDocument = 0, 0, 0, 0, C
+PrintPedido = 84, 66, 765, 653, C
+PrintFichasPedido = 0, 0, 0, 0, C
+PrintFichaArticulo = 176, 176, 807, 721, C
+PrintNecesidadesMaterial = 0, 0, 0, 0, C
+PrintComisiones = 0, 0, 0, 0, C

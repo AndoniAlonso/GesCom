@@ -1,0 +1,12 @@
+CREATE TABLE [dbo].[Operadores] (
+	[OperadorID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Operador] [varchar] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Descripcion] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	CONSTRAINT [PK_Operadores] PRIMARY KEY  NONCLUSTERED 
+	(
+		[OperadorID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+

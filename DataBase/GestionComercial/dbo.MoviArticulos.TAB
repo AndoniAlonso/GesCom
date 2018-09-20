@@ -1,0 +1,38 @@
+CREATE TABLE [dbo].[MoviArticulos] (
+	[MoviArticuloID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Fecha] [datetime] NOT NULL ,
+	[ArticuloColorID] [int] NOT NULL ,
+	[Tipo] [varchar] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Concepto] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[CantidadT36] [CANTIDAD] NOT NULL ,
+	[CantidadT38] [CANTIDAD] NOT NULL ,
+	[CantidadT40] [CANTIDAD] NOT NULL ,
+	[CantidadT42] [CANTIDAD] NOT NULL ,
+	[CantidadT44] [CANTIDAD] NOT NULL ,
+	[CantidadT46] [CANTIDAD] NOT NULL ,
+	[CantidadT48] [CANTIDAD] NOT NULL ,
+	[CantidadT50] [CANTIDAD] NOT NULL ,
+	[CantidadT52] [CANTIDAD] NOT NULL ,
+	[CantidadT54] [CANTIDAD] NOT NULL ,
+	[CantidadT56] [CANTIDAD] NOT NULL ,
+	[StockFinal] [CANTIDAD] NOT NULL ,
+	[PrecioEUR] [IMPORTEEUR] NOT NULL ,
+	[PrecioPTA] [IMPORTEPTA] NOT NULL ,
+	[PrecioVentaEUR] [IMPORTEEUR] NOT NULL ,
+	[PrecioVentaPTA] [IMPORTEPTA] NOT NULL ,
+	[PrecioCosteEUR] [IMPORTEEUR] NOT NULL ,
+	[PrecioCostePTA] [IMPORTEPTA] NOT NULL ,
+	CONSTRAINT [PK_MoviArticulos] PRIMARY KEY  NONCLUSTERED 
+	(
+		[MoviArticuloID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_MoviArticulos_ArticuloColores] FOREIGN KEY 
+	(
+		[ArticuloColorID]
+	) REFERENCES [dbo].[ArticuloColores] (
+		[ARTICULOCOLORID]
+	)
+) ON [PRIMARY]
+GO
+
+

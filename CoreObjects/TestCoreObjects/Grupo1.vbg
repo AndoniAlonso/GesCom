@@ -1,0 +1,4 @@
+VBGROUP 5.0
+StartupProject=TestCoreObjects.vbp
+Project=..\CoreObjects.vbp
+Project=..\..\CoreServer\CoreServer.vbp

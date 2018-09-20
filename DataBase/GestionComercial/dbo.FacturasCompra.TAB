@@ -1,0 +1,94 @@
+CREATE TABLE [dbo].[FacturasCompra] (
+	[FacturaCompraID] [int] IDENTITY (1, 1) NOT NULL ,
+	[ProveedorID] [int] NOT NULL ,
+	[Fecha] [datetime] NOT NULL ,
+	[FechaContable] [datetime] NOT NULL ,
+	[Numero] [int] NOT NULL ,
+	[Sufijo] [char] (10) COLLATE Modern_Spanish_CI_AS NOT NULL ,
+	[NuestraReferencia] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[SuReferencia] [varchar] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Observaciones] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[SituacionContable] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[BrutoPTA] [IMPORTEPTA] NOT NULL ,
+	[BrutoEUR] [IMPORTEEUR] NOT NULL ,
+	[DescuentoPTA] [IMPORTEPTA] NOT NULL ,
+	[DescuentoEUR] [IMPORTEEUR] NOT NULL ,
+	[PortesPTA] [IMPORTEPTA] NOT NULL ,
+	[PortesEUR] [IMPORTEEUR] NOT NULL ,
+	[EmbalajesPTA] [IMPORTEPTA] NOT NULL ,
+	[EmbalajesEUR] [IMPORTEEUR] NOT NULL ,
+	[BaseImponiblePTA] [IMPORTEPTA] NOT NULL ,
+	[BaseImponibleEUR] [IMPORTEEUR] NOT NULL ,
+	[IVAPTA] [IMPORTEPTA] NOT NULL ,
+	[IVAEUR] [IMPORTEEUR] NOT NULL ,
+	[RecargoPTA] [IMPORTEPTA] NOT NULL ,
+	[RecargoEUR] [IMPORTEEUR] NOT NULL ,
+	[NetoPTA] [IMPORTEPTA] NOT NULL ,
+	[NetoEUR] [IMPORTEEUR] NOT NULL ,
+	[BancoID] [int] NOT NULL ,
+	[TransportistaID] [int] NOT NULL ,
+	[FormaPagoID] [int] NOT NULL ,
+	[DatoComercialID] [int] NOT NULL ,
+	[MedioPagoID] [int] NOT NULL CONSTRAINT [DF_FacturasCompra_MedioPagoID] DEFAULT (0),
+	[TemporadaID] [int] NOT NULL ,
+	[EmpresaID] [int] NOT NULL ,
+	CONSTRAINT [PK_FacturasCompra] PRIMARY KEY  NONCLUSTERED 
+	(
+		[FacturaCompraID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [IX_FacturasCompra] UNIQUE  NONCLUSTERED 
+	(
+		[EmpresaID],
+		[TemporadaID],
+		[Numero],
+		[Sufijo]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_FacturasCompra_Bancos] FOREIGN KEY 
+	(
+		[BancoID]
+	) REFERENCES [dbo].[Bancos] (
+		[BancoID]
+	),
+	CONSTRAINT [FK_FacturasCompra_Empresas] FOREIGN KEY 
+	(
+		[EmpresaID]
+	) REFERENCES [dbo].[Empresas] (
+		[EmpresaID]
+	),
+	CONSTRAINT [FK_FacturasCompra_FormasDePago] FOREIGN KEY 
+	(
+		[FormaPagoID]
+	) REFERENCES [dbo].[FormasDePago] (
+		[FormaPagoID]
+	),
+	CONSTRAINT [FK_FacturasCompra_MediosPago] FOREIGN KEY 
+	(
+		[MedioPagoID]
+	) REFERENCES [dbo].[MediosPago] (
+		[MedioPagoID]
+	),
+	CONSTRAINT [FK_FacturasCompra_Proveedores] FOREIGN KEY 
+	(
+		[ProveedorID]
+	) REFERENCES [dbo].[Proveedores] (
+		[ProveedorID]
+	),
+	CONSTRAINT [FK_FacturasCompra_Temporadas] FOREIGN KEY 
+	(
+		[TemporadaID]
+	) REFERENCES [dbo].[Temporadas] (
+		[TemporadaID]
+	),
+	CONSTRAINT [FK_FacturasCompra_Transportistas] FOREIGN KEY 
+	(
+		[TransportistaID]
+	) REFERENCES [dbo].[Transportistas] (
+		[TransportistaID]
+	) NOT FOR REPLICATION 
+) ON [PRIMARY]
+GO
+
+
+alter table [dbo].[FacturasCompra] nocheck constraint [FK_FacturasCompra_Transportistas]
+GO
+

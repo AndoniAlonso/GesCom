@@ -1,0 +1,5 @@
+VBGROUP 5.0
+Project=GescomObjects\GescomObjects.vbp
+StartupProject=GescomUI\GescomUI.vbp
+Project=GescomUI\GescomPrint.vbp
+Project=EntityProxy\EntityProxy.vbp

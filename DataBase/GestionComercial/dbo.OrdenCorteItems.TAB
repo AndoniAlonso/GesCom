@@ -1,0 +1,46 @@
+CREATE TABLE [dbo].[OrdenCorteItems] (
+	[OrdenCorteItemID] [int] IDENTITY (1, 1) NOT NULL ,
+	[OrdenCorteID] [int] NOT NULL ,
+	[ArticuloColorID] [int] NOT NULL ,
+	[ArticuloID] [int] NOT NULL ,
+	[PedidoVentaItemID] [int] NOT NULL ,
+	[Situacion] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[CantidadT36] [CANTIDAD] NOT NULL ,
+	[CantidadT38] [CANTIDAD] NOT NULL ,
+	[CantidadT40] [CANTIDAD] NOT NULL ,
+	[CantidadT42] [CANTIDAD] NOT NULL ,
+	[CantidadT44] [CANTIDAD] NOT NULL ,
+	[CantidadT46] [CANTIDAD] NOT NULL ,
+	[CantidadT48] [CANTIDAD] NOT NULL ,
+	[CantidadT50] [CANTIDAD] NOT NULL ,
+	[CantidadT52] [CANTIDAD] NOT NULL ,
+	[CantidadT54] [CANTIDAD] NOT NULL ,
+	[CantidadT56] [CANTIDAD] NOT NULL ,
+	[TemporadaID] [int] NOT NULL ,
+	CONSTRAINT [PK_OrdenCorteItems] PRIMARY KEY  NONCLUSTERED 
+	(
+		[OrdenCorteItemID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_OrdenCorteItems_ArticuloColores] FOREIGN KEY 
+	(
+		[ArticuloColorID]
+	) REFERENCES [dbo].[ArticuloColores] (
+		[ARTICULOCOLORID]
+	),
+	CONSTRAINT [FK_OrdenCorteItems_OrdenesCorte] FOREIGN KEY 
+	(
+		[OrdenCorteID]
+	) REFERENCES [dbo].[OrdenesCorte] (
+		[OrdenCorteID]
+	),
+	CONSTRAINT [FK_OrdenCorteItems_PedidoVentaItems] FOREIGN KEY 
+	(
+		[PedidoVentaItemID]
+	) REFERENCES [dbo].[PedidoVentaItems] (
+		[PedidoVentaItemID]
+	),
+	CONSTRAINT [CK_OrdenCorteItems_Situacion] CHECK ([Situacion] = 'F' or [Situacion] = 'A')
+) ON [PRIMARY]
+GO
+
+

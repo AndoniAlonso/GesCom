@@ -1,0 +1,19 @@
+CREATE TABLE [dbo].[FormasDePago] (
+	[FormaPagoID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Nombre] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Giros] [int] NOT NULL ,
+	[MesesPrimerGiro] [int] NOT NULL ,
+	[MesesEntreGiros] [int] NOT NULL ,
+	[Contado] [bit] NOT NULL ,
+	CONSTRAINT [PK_FORMASDEPAGO_1__10] PRIMARY KEY  CLUSTERED 
+	(
+		[FormaPagoID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [UQ_FORMASDEPAGO_2__10] UNIQUE  NONCLUSTERED 
+	(
+		[FormaPagoID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+

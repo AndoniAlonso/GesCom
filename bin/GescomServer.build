@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+    <project name="Gescom" default="CompleteBuild" basedir=".">
+        <description>Construir Gescom</description>
+        <property name="COMAdmin.Application" value="GCServerMTS" readonly="true" />
+        <property name="COMAdmin.IISApplication" value="'IIS Out-Of-Process Pooled Applications'" readonly="true" />
+        <property name="COMAdmin.EXEName" value="${environment::get-folder-path('ProgramFiles')}\COMAdmin" readonly="true" />
+        <property name="COMAdmin.COMDLLName" value="GCServerMTS.dll" readonly="true" />
+        <target name="CompleteBuild" depends="GesComUpdate,AplicacionCOM,InnoSetup" />
+		<target name="GesComUpdate">
+			<svn-update
+		 	destination="." 
+		 	uri="svn://80.33.251.41/gescom" 
+			verbose="true" />
+		</target>
+        	<target name="AplicacionCOM" description="Crea la aplicacion com+ asociada la DLL GCServerMTS">
+			<exec program="COMAdmin.exe" append="true" basedir="${COMAdmin.EXEName}" commandline="/a:shutdown /app:${COMAdmin.Application}" failonerror="false">
+			</exec>
+			<exec program="COMAdmin.exe" append="true" basedir="${COMAdmin.EXEName}" commandline="/a:deleteallcomponents /app:${COMAdmin.Application}" failonerror="false">
+			</exec>
+			<exec program="COMAdmin.exe" append="true" basedir="${COMAdmin.EXEName}" commandline="/a:install /app:${COMAdmin.Application} /comp:${COMAdmin.COMDLLName}">
+			</exec>
+			<comregister file="GescomPrint.dll" />
+			<comregister file="GescomObjects.dll" />
+			<comregister file="EntityProxy.ocx" />
+		</target>
+		<target name="InnoSetup" description="Construir el instalable">
+        		<exec program="ISCC.exe" basedir="${environment::get-folder-path('ProgramFiles')}\Inno Setup 5">
+    				<arg value="./Inno Setup/Gescom.iss" />
+			</exec>
+	  	</target>
+
+    </project>
+        

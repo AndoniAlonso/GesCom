@@ -1,0 +1,33 @@
+CREATE TABLE [dbo].[IVAApuntes] (
+	[IVAApunteID] [int] IDENTITY (1, 1) NOT NULL ,
+	[AsientoID] [int] NOT NULL ,
+	[TipoApunte] [char] (1) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[NumeroFactura] [char] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[CuentaIVA] [char] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[CuentaTotal] [char] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[CuentaBase] [char] (10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Titular] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[DNINIF] [char] (20) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[BaseImponible] [IMPORTEEUR] NOT NULL ,
+	[Total] [IMPORTEEUR] NOT NULL ,
+	[IVA] [PORCENTAJE] NOT NULL ,
+	[CuotaIVA] [IMPORTEEUR] NOT NULL ,
+	[RecargoEquivalencia] [PORCENTAJE] NOT NULL ,
+	[CuotaRecargo] [IMPORTEEUR] NOT NULL ,
+	CONSTRAINT [PK_IVAApuntes] PRIMARY KEY  NONCLUSTERED 
+	(
+		[IVAApunteID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [FK_IVAApuntes_Asientos] FOREIGN KEY 
+	(
+		[AsientoID]
+	) REFERENCES [dbo].[Asientos] (
+		[AsientoID]
+	)
+) ON [PRIMARY]
+GO
+
+ CREATE  INDEX [IX_IVAApuntes] ON [dbo].[IVAApuntes]([AsientoID]) WITH  FILLFACTOR = 90 ON [PRIMARY]
+GO
+
+

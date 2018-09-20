@@ -1,0 +1,13 @@
+CREATE TABLE [dbo].[DatosComerciales] (
+	[DatoComercialID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Descuento] [PORCENTAJE] NOT NULL ,
+	[RecargoEquivalencia] [PORCENTAJE] NOT NULL ,
+	[IVA] [PORCENTAJE] NOT NULL ,
+	CONSTRAINT [PK_DatosComerciales] PRIMARY KEY  NONCLUSTERED 
+	(
+		[DatoComercialID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+

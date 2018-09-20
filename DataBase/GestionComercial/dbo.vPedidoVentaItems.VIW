@@ -1,0 +1,26 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vPedidoVentaItems
+AS
+SELECT     dbo.vNombreArticuloColores.ARTICULOCOLORID, dbo.PedidoVentaItems.PedidoVentaItemID, dbo.PedidoVentaItems.PedidoVentaID, 
+                      dbo.PedidoVentaItems.Situacion, dbo.PedidoVentaItems.SituacionCorte, dbo.PedidoVentaItems.CantidadT36, dbo.PedidoVentaItems.CantidadT38, 
+                      dbo.PedidoVentaItems.CantidadT40, dbo.PedidoVentaItems.CantidadT42, dbo.PedidoVentaItems.CantidadT44, dbo.PedidoVentaItems.CantidadT46, 
+                      dbo.PedidoVentaItems.CantidadT48, dbo.PedidoVentaItems.CantidadT50, dbo.PedidoVentaItems.CantidadT52, dbo.PedidoVentaItems.CantidadT54, 
+                      dbo.PedidoVentaItems.CantidadT56, dbo.PedidoVentaItems.ServidoT36, dbo.PedidoVentaItems.ServidoT38, dbo.PedidoVentaItems.ServidoT40, 
+                      dbo.PedidoVentaItems.ServidoT42, dbo.PedidoVentaItems.ServidoT44, dbo.PedidoVentaItems.ServidoT46, dbo.PedidoVentaItems.ServidoT48, 
+                      dbo.PedidoVentaItems.ServidoT50, dbo.PedidoVentaItems.ServidoT52, dbo.PedidoVentaItems.ServidoT54, dbo.PedidoVentaItems.ServidoT56, 
+                      dbo.PedidoVentaItems.PrecioVentaPTA, dbo.PedidoVentaItems.PrecioVentaEUR, dbo.PedidoVentaItems.Descuento, dbo.PedidoVentaItems.BrutoPTA, 
+                      dbo.PedidoVentaItems.BrutoEUR, dbo.PedidoVentaItems.Comision, dbo.PedidoVentaItems.TemporadaID, 
+                      dbo.vNombreArticuloColores.Nombre AS NombreArticuloColor, dbo.PedidoVentaItems.Observaciones
+FROM         dbo.PedidoVentaItems INNER JOIN
+                      dbo.vNombreArticuloColores ON dbo.PedidoVentaItems.ArticuloColorID = dbo.vNombreArticuloColores.ARTICULOCOLORID
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

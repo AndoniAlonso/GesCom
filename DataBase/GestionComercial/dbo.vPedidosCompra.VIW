@@ -1,0 +1,31 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vPedidosCompra
+AS
+SELECT PedidosCompra.PedidoCompraID, PedidosCompra.Fecha, 
+    PedidosCompra.FechaEntrega, PedidosCompra.Numero, 
+    PedidosCompra.Observaciones, 
+    vBancos.NombreEmpresa AS NombreBanco, 
+    Proveedores.Nombre AS NombreProveedor, 
+    Transportistas.Nombre AS NombreTransportista, 
+    PedidosCompra.TemporadaID, PedidosCompra.EmpresaID, 
+    PedidosCompra.TotalBrutoPTA, 
+    PedidosCompra.TotalBrutoEUR
+FROM PedidosCompra INNER JOIN
+    vBancos ON 
+    PedidosCompra.BancoID = vBancos.BancoID INNER JOIN
+    Proveedores ON 
+    PedidosCompra.ProveedorID = Proveedores.ProveedorID LEFT OUTER
+     JOIN
+    Transportistas ON 
+    PedidosCompra.TransportistaID = Transportistas.TransportistaID
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

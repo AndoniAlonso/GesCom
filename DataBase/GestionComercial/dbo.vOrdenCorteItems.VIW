@@ -1,0 +1,44 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/****** Objeto: vista dbo.vOrdenCorteItems    fecha de la secuencia de comandos: 13/09/2001 20:09:23 ******/
+
+/****** Objeto:  vista dbo.vOrdenCorteItems    fecha de la secuencia de comandos: 10/09/2001 18:06:21 ******/
+CREATE VIEW dbo.vOrdenCorteItems
+AS
+SELECT OrdenCorteItems.OrdenCorteItemID, 
+    OrdenCorteItems.OrdenCorteID, 
+    OrdenCorteItems.ArticuloColorID, OrdenCorteItems.ArticuloID, 
+    OrdenCorteItems.PedidoVentaItemID, 
+    OrdenCorteItems.Situacion, OrdenCorteItems.CantidadT36, 
+    OrdenCorteItems.CantidadT38, OrdenCorteItems.CantidadT40, 
+    OrdenCorteItems.CantidadT42, OrdenCorteItems.CantidadT44, 
+    OrdenCorteItems.CantidadT46, OrdenCorteItems.CantidadT48, 
+    OrdenCorteItems.CantidadT50, OrdenCorteItems.CantidadT52, 
+    OrdenCorteItems.CantidadT54, OrdenCorteItems.CantidadT56, 
+    OrdenCorteItems.TemporadaID, PedidosVenta.Numero, 
+    Clientes.Nombre AS Cliente, 
+    vNombreArticuloColores.Nombre AS Descripcion
+FROM OrdenCorteItems INNER JOIN
+    PedidoVentaItems ON 
+    OrdenCorteItems.PedidoVentaItemID = PedidoVentaItems.PedidoVentaItemID
+     INNER JOIN
+    PedidosVenta ON 
+    PedidoVentaItems.PedidoVentaID = PedidosVenta.PedidoVentaID
+     INNER JOIN
+    Clientes ON 
+    PedidosVenta.ClienteID = Clientes.ClienteID INNER JOIN
+    vNombreArticuloColores ON 
+    OrdenCorteItems.ArticuloColorID = vNombreArticuloColores.ARTICULOCOLORID
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

@@ -1,0 +1,33 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vNecesidadesMaterial2
+AS
+SELECT     dbo.PedidoVentaItems.PedidoVentaID, dbo.PedidoVentaItems.PedidoVentaItemID, dbo.Materiales.MATERIALID, dbo.Materiales.CODIGO, 
+                      dbo.Materiales.NOMBRE, dbo.Materiales.STOCKACTUAL, dbo.Materiales.PRECIOCOSTEPTA, dbo.Materiales.PRECIOCOSTEEUR, 
+                      (dbo.PedidoVentaItems.CantidadT36 + dbo.PedidoVentaItems.CantidadT38 + dbo.PedidoVentaItems.CantidadT40 + dbo.PedidoVentaItems.CantidadT42 +
+                       dbo.PedidoVentaItems.CantidadT44 + dbo.PedidoVentaItems.CantidadT46 + dbo.PedidoVentaItems.CantidadT48 + dbo.PedidoVentaItems.CantidadT50 +
+                       dbo.PedidoVentaItems.CantidadT52 + dbo.PedidoVentaItems.CantidadT54 + dbo.PedidoVentaItems.CantidadT56) 
+                      * dbo.EstrModelos.CANTIDAD AS Cantidad, 
+                      (dbo.PedidoVentaItems.ServidoT36 + dbo.PedidoVentaItems.ServidoT38 + dbo.PedidoVentaItems.ServidoT40 + dbo.PedidoVentaItems.ServidoT42 + dbo.PedidoVentaItems.ServidoT44
+                       + dbo.PedidoVentaItems.ServidoT46 + dbo.PedidoVentaItems.ServidoT48 + dbo.PedidoVentaItems.ServidoT50 + dbo.PedidoVentaItems.ServidoT52 + dbo.PedidoVentaItems.ServidoT54
+                       + dbo.PedidoVentaItems.ServidoT56) * dbo.Modelos.CANTIDADTELA AS Servido, dbo.PedidoVentaItems.TemporadaID, dbo.Materiales.AnchuraTela, 
+                      dbo.PedidosVenta.Numero, dbo.Proveedores.Nombre AS NombreProveedor, '' AS NombreColor, '' AS NombreSerie, 0 AS SerieID
+FROM         dbo.PedidoVentaItems INNER JOIN
+                      dbo.ArticuloColores ON dbo.PedidoVentaItems.ArticuloColorID = dbo.ArticuloColores.ARTICULOCOLORID INNER JOIN
+                      dbo.Articulos ON dbo.ArticuloColores.ARTICULOID = dbo.Articulos.ARTICULOID INNER JOIN
+                      dbo.Modelos ON dbo.Articulos.MODELOID = dbo.Modelos.MODELOID INNER JOIN
+                      dbo.EstrModelos ON dbo.Modelos.MODELOID = dbo.EstrModelos.MODELOID INNER JOIN
+                      dbo.Materiales ON dbo.EstrModelos.MATERIALID = dbo.Materiales.MATERIALID INNER JOIN
+                      dbo.PedidosVenta ON dbo.PedidoVentaItems.PedidoVentaID = dbo.PedidosVenta.PedidoVentaID LEFT OUTER JOIN
+                      dbo.Proveedores ON dbo.Materiales.ProveedorID = dbo.Proveedores.ProveedorID
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

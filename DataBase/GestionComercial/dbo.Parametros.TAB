@@ -1,0 +1,25 @@
+CREATE TABLE [dbo].[Parametros] (
+	[ParametroID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Alfanumero] [varchar] (15) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Clave] [varchar] (25) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Propietario] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Usuario] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[EmpresaID] [int] NOT NULL ,
+	[TemporadaID] [int] NOT NULL ,
+	[ParidadEUR] [decimal](11, 6) NOT NULL ,
+	[Moneda] [varchar] (3) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[DireccionID] [int] NULL ,
+	[CarpetaContawin] [varchar] (100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Proyecto] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[ServidorPersist] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL ,
+	[Sufijo] [char] (10) COLLATE Modern_Spanish_CI_AS NOT NULL ,
+	CONSTRAINT [FK_Parametros_Direcciones] FOREIGN KEY 
+	(
+		[DireccionID]
+	) REFERENCES [dbo].[Direcciones] (
+		[DireccionID]
+	)
+) ON [PRIMARY]
+GO
+
+

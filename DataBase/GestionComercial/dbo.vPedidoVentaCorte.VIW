@@ -1,0 +1,37 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/****** Objeto:  vista dbo.vPedidoVentaCorte    fecha de la secuencia de comandos: 10/09/2001 18:06:21 *****
+
+
+*/
+CREATE VIEW dbo.vPedidoVentaCorte
+AS
+SELECT     dbo.PedidoVentaItems.SituacionCorte, dbo.PedidoVentaItems.PedidoVentaItemID AS DocumentoID, dbo.PedidosVenta.Numero, 
+                      dbo.ArticuloColores.NOMBRE, RTRIM(dbo.Prendas.NOMBRE) + ' ' + RTRIM(dbo.Modelos.NOMBRE) + ' ' + RTRIM(dbo.Series.Nombre) 
+                      + ' ' + RTRIM(dbo.ArticuloColores.NOMBRECOLOR) AS Descripcion, 
+                      dbo.PedidoVentaItems.CantidadT36 + dbo.PedidoVentaItems.CantidadT38 + dbo.PedidoVentaItems.CantidadT40 + dbo.PedidoVentaItems.CantidadT42 + dbo.PedidoVentaItems.CantidadT44
+                       + dbo.PedidoVentaItems.CantidadT46 + dbo.PedidoVentaItems.CantidadT48 + dbo.PedidoVentaItems.CantidadT50 + dbo.PedidoVentaItems.CantidadT52
+                       + dbo.PedidoVentaItems.CantidadT54 + dbo.PedidoVentaItems.CantidadT56 - dbo.PedidoVentaItems.ServidoT36 - dbo.PedidoVentaItems.ServidoT38 - dbo.PedidoVentaItems.ServidoT40
+                       - dbo.PedidoVentaItems.ServidoT42 - dbo.PedidoVentaItems.ServidoT44 - dbo.PedidoVentaItems.ServidoT46 - dbo.PedidoVentaItems.ServidoT48 - dbo.PedidoVentaItems.ServidoT50
+                       - dbo.PedidoVentaItems.ServidoT52 - dbo.PedidoVentaItems.ServidoT54 - dbo.PedidoVentaItems.ServidoT56 AS Cantidad, dbo.PedidosVenta.Fecha, 
+                      dbo.Articulos.ARTICULOID AS PropietarioID, dbo.PedidosVenta.TemporadaID, dbo.PedidosVenta.EmpresaID
+FROM         dbo.ArticuloColores INNER JOIN
+                      dbo.Articulos ON dbo.ArticuloColores.ARTICULOID = dbo.Articulos.ARTICULOID INNER JOIN
+                      dbo.PedidoVentaItems ON dbo.ArticuloColores.ARTICULOCOLORID = dbo.PedidoVentaItems.ArticuloColorID INNER JOIN
+                      dbo.PedidosVenta ON dbo.PedidoVentaItems.PedidoVentaID = dbo.PedidosVenta.PedidoVentaID INNER JOIN
+                      dbo.Modelos ON dbo.Articulos.MODELOID = dbo.Modelos.MODELOID INNER JOIN
+                      dbo.Prendas ON dbo.Articulos.PRENDAID = dbo.Prendas.PrendaID INNER JOIN
+                      dbo.Series ON dbo.Articulos.SERIEID = dbo.Series.SerieID
+WHERE     (dbo.PedidoVentaItems.SituacionCorte <> 'C')
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

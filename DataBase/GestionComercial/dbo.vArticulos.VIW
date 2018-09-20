@@ -1,0 +1,25 @@
+SET QUOTED_IDENTIFIER ON 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/****** Objeto: vista dbo.vArticulos    fecha de la secuencia de comandos: 13/09/2001 20:09:22 *****
+***** Objeto:  vista dbo.vArticulos    fecha de la secuencia de comandos: 10/09/2001 18:06:20 ******/
+CREATE VIEW dbo.vArticulos
+AS
+SELECT     dbo.Articulos.ARTICULOID, dbo.Articulos.NOMBRE, dbo.Articulos.STOCKACTUAL, dbo.Articulos.STOCKPENDIENTE, dbo.Articulos.STOCKMINIMO, 
+                      dbo.Articulos.STOCKMAXIMO, dbo.Articulos.LOTEECONOMICO, dbo.Articulos.PRECIOCOSTEPTA, dbo.Articulos.PRECIOCOSTEEUR, 
+                      dbo.Articulos.PRECIOVENTAPTA, dbo.Articulos.PRECIOVENTAEUR, RTRIM(dbo.Series.Nombre) AS NOMBRESERIE, RTRIM(dbo.Prendas.NOMBRE) 
+                      AS NOMBREPRENDA, RTRIM(dbo.Modelos.NOMBRE) AS NOMBREMODELO, dbo.Articulos.TEMPORADAID, dbo.Articulos.PRENDAID, 
+                      dbo.Articulos.MODELOID, dbo.Articulos.SERIEID
+FROM         dbo.Articulos INNER JOIN
+                      dbo.Series ON dbo.Articulos.SERIEID = dbo.Series.SerieID INNER JOIN
+                      dbo.Prendas ON dbo.Articulos.PRENDAID = dbo.Prendas.PrendaID INNER JOIN
+                      dbo.Modelos ON dbo.Articulos.MODELOID = dbo.Modelos.MODELOID
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

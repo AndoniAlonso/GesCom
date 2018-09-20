@@ -1,0 +1,23 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+/****** Objeto:  vista dbo.vTallajePedidos    fecha de la secuencia de comandos: 10/09/2001 18:06:21 ******/
+CREATE VIEW dbo.vTallajePedidos
+AS
+SELECT     dbo.PedidoVentaItems.PedidoVentaItemID, dbo.vNombreArticuloColores.CodigoModelo, dbo.vNombreArticuloColores.NombreModelo, 
+                      dbo.PedidoVentaItems.CantidadT36, dbo.PedidoVentaItems.CantidadT38, dbo.PedidoVentaItems.CantidadT40, dbo.PedidoVentaItems.CantidadT42, 
+                      dbo.PedidoVentaItems.CantidadT44, dbo.PedidoVentaItems.CantidadT46, dbo.PedidoVentaItems.CantidadT48, dbo.PedidoVentaItems.CantidadT50, 
+                      dbo.PedidoVentaItems.CantidadT52, dbo.PedidoVentaItems.CantidadT54, dbo.PedidoVentaItems.CantidadT56, 
+                      dbo.PedidoVentaItems.TemporadaID
+FROM         dbo.PedidoVentaItems INNER JOIN
+                      dbo.vNombreArticuloColores ON dbo.PedidoVentaItems.ArticuloColorID = dbo.vNombreArticuloColores.ARTICULOCOLORID
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

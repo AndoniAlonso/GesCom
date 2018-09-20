@@ -1,0 +1,27 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vComisiones
+AS
+SELECT     dbo.FacturasVenta.FacturaVentaID, dbo.FacturasVenta.RepresentanteID, dbo.Representantes.Nombre AS NombreRepresentante, 
+                      dbo.FacturasVenta.Numero, dbo.FacturasVenta.Fecha, dbo.FacturasVenta.ClienteID, dbo.Clientes.Nombre AS NombreCliente, 
+                      dbo.FacturasVenta.BrutoEUR, dbo.FacturasVenta.TemporadaID, dbo.FacturasVenta.EmpresaID, AVG(dbo.FacturaVentaItems.Comision) AS Comision, 
+                      SUM(dbo.FacturaVentaItems.ComisionEUR) AS ComisionEUR
+FROM         dbo.FacturasVenta INNER JOIN
+                      dbo.Representantes ON dbo.FacturasVenta.RepresentanteID = dbo.Representantes.RepresentanteID INNER JOIN
+                      dbo.Clientes ON dbo.FacturasVenta.ClienteID = dbo.Clientes.ClienteID INNER JOIN
+                      dbo.FacturaVentaItems ON dbo.FacturasVenta.FacturaVentaID = dbo.FacturaVentaItems.FacturaVentaID
+GROUP BY dbo.FacturasVenta.FacturaVentaID, dbo.FacturasVenta.RepresentanteID, dbo.Representantes.Nombre, dbo.FacturasVenta.Numero, 
+                      dbo.FacturasVenta.Fecha, dbo.FacturasVenta.ClienteID, dbo.Clientes.Nombre, dbo.FacturasVenta.BrutoEUR, dbo.FacturasVenta.TemporadaID, 
+                      dbo.FacturasVenta.EmpresaID
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

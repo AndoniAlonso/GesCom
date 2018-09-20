@@ -1,0 +1,12 @@
+CREATE TABLE [dbo].[Consultas] (
+	[ConsultaID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Nombre] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Objeto] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	CONSTRAINT [PK_Consulta] PRIMARY KEY  NONCLUSTERED 
+	(
+		[ConsultaID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+

@@ -1,0 +1,29 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+CREATE VIEW dbo.vAlbaranCompraPendientes
+AS
+SELECT AlbaranCompraItems.Situacion, 
+    AlbaranCompraItems.AlbaranCompraItemID AS DocumentoID, 
+    AlbaranesCompra.Numero, Materiales.CODIGO AS Nombre, 
+    Materiales.NOMBRE AS Descripcion, 
+    AlbaranCompraItems.Cantidad, AlbaranesCompra.Fecha, 
+    AlbaranesCompra.ProveedorID AS PropietarioID, 
+    AlbaranesCompra.TemporadaID, 
+    AlbaranesCompra.EmpresaID
+FROM Materiales INNER JOIN
+    AlbaranCompraItems ON 
+    Materiales.MATERIALID = AlbaranCompraItems.MaterialID INNER
+     JOIN
+    AlbaranesCompra ON 
+    AlbaranCompraItems.AlbaranCompraID = AlbaranesCompra.AlbaranCompraID
+WHERE (AlbaranCompraItems.Situacion <> 'F')
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

@@ -1,0 +1,34 @@
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+
+
+/****** Objeto: vista dbo.vPrevisionEtiqueta    fecha de la secuencia de comandos: 13/09/2001 20:09:24 ******/
+
+/****** Objeto:  vista dbo.vPrevEtiqueta    fecha de la secuencia de comandos: 10/09/2001 18:06:22 ******/
+CREATE VIEW dbo.vPrevisionEtiqueta
+AS
+SELECT OrdenCorteItems.OrdenCorteItemID, 
+    vNombreArticuloColores.CodigoSerie, 
+    vNombreArticuloColores.NombreSerie, 
+    vNombreArticuloColores.CodigoPrenda, 
+    vNombreArticuloColores.NombrePrenda, 
+    OrdenCorteItems.CantidadT36 + OrdenCorteItems.CantidadT38 +
+     OrdenCorteItems.CantidadT40 + OrdenCorteItems.CantidadT42 +
+     OrdenCorteItems.CantidadT44 + OrdenCorteItems.CantidadT46 +
+     OrdenCorteItems.CantidadT48 + OrdenCorteItems.CantidadT50 +
+     OrdenCorteItems.CantidadT52 + OrdenCorteItems.CantidadT54 +
+     OrdenCorteItems.CantidadT56 AS Cantidad
+FROM OrdenCorteItems INNER JOIN
+    vNombreArticuloColores ON 
+    OrdenCorteItems.ArticuloColorID = vNombreArticuloColores.ARTICULOCOLORID
+
+
+
+GO
+SET QUOTED_IDENTIFIER OFF 
+GO
+SET ANSI_NULLS ON 
+GO
+

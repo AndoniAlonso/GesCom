@@ -1,0 +1,19 @@
+CREATE TABLE [dbo].[Temporadas] (
+	[TemporadaID] [int] IDENTITY (1, 1) NOT NULL ,
+	[Nombre] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	[Codigo] [varchar] (2) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL ,
+	CONSTRAINT [PK___14__10] PRIMARY KEY  CLUSTERED 
+	(
+		[TemporadaID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] ,
+	CONSTRAINT [UQ___15__10] UNIQUE  NONCLUSTERED 
+	(
+		[TemporadaID]
+	) WITH  FILLFACTOR = 90  ON [PRIMARY] 
+) ON [PRIMARY]
+GO
+
+ CREATE  UNIQUE  INDEX [IX_Temporadas] ON [dbo].[Temporadas]([Codigo]) WITH  FILLFACTOR = 90 ON [PRIMARY]
+GO
+
+
